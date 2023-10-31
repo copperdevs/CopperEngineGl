@@ -23,23 +23,23 @@ public static class SceneManager
         Scenes.Add(scene, scene);
     }
 
-    internal static void CurrentSceneGameComponentsUpdate() => GameComponentsUpdate(currentScene);
+    internal static void CurrentSceneGameObjectsUpdate() => GameObjectsUpdate(currentScene);
 
-    internal static void GameComponentsUpdate(Guid targetScene) =>
-        Scenes[targetScene].Components.ForEach(c => c.Update());
+    internal static void GameObjectsUpdate(Guid targetScene) =>
+        Scenes[targetScene].GameObjects.ForEach(c => c.Update());
 
-    internal static void CurrentSceneGameComponentsRender() => GameComponentsRender(currentScene);
+    internal static void CurrentSceneGameObjectsRender() => GameObjectsRender(currentScene);
 
-    internal static void GameComponentsRender(Guid targetScene) =>
-        Scenes[targetScene].Components.ForEach(c => c.Render());
+    internal static void GameObjectsRender(Guid targetScene) =>
+        Scenes[targetScene].GameObjects.ForEach(c => c.Render());
 
-    internal static void CurrentSceneGameComponentsRenderEditor() => GameComponentsRenderEditor(currentScene);
+    internal static void CurrentSceneGameObjectsRenderEditor() => GameObjectsRenderEditor(currentScene);
 
-    internal static void GameComponentsRenderEditor(Guid targetScene) =>
-        Scenes[targetScene].Components.ForEach(c => c.RenderEditor());
+    internal static void GameObjectsRenderEditor(Guid targetScene) =>
+        Scenes[targetScene].GameObjects.ForEach(c => c.RenderEditor());
 
-    internal static void CurrentSceneGameComponentsStop() => GameComponentsStop(currentScene);
-    internal static void GameComponentsStop(Guid targetScene) => Scenes[targetScene].Components.ForEach(c => c.Stop());
+    internal static void CurrentSceneGameObjectsStop() => GameObjectsStop(currentScene);
+    internal static void GameObjectsStop(Guid targetScene) => Scenes[targetScene].GameObjects.ForEach(c => c.Stop());
 
     #endregion
 

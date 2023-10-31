@@ -4,7 +4,7 @@ namespace VoxelGame.Engine.Components;
 
 public class GameComponent
 {
-    protected Transform Transform;
+    internal Transform? Transform;
     
     public virtual void Start() { }
     public virtual void Update() { }

@@ -25,7 +25,7 @@ public static class VoxelEngine
             Input.Initialize(VoxelWindow.InputContext?.Keyboards[0]);
             
             // engine assets
-            EngineAssets.AddComponent(new CameraController());
+            EngineAssets.AddComponent<CameraController>();
             
             // testing stuff
             Input.RegisterInput(Key.Escape, VoxelWindow.Window!.Close, Input.RegisterType.Pressed);
@@ -33,8 +33,8 @@ public static class VoxelEngine
 
         VoxelWindow.Window!.Closing += () =>
         {
-            SceneManager.CurrentSceneGameComponentsStop();
-            SceneManager.GameComponentsStop(EngineAssets);
+            SceneManager.CurrentSceneGameObjectsStop();
+            SceneManager.GameObjectsStop(EngineAssets);
             VoxelRenderer.Close();
         };
 
@@ -47,8 +47,8 @@ public static class VoxelEngine
             // Console.WriteLine($"Mouse Position - <{Input.MousePosition.X},{Input.MousePosition.Y}>");
             // Console.WriteLine($"Mouse Delta - <{Input.MouseDelta}>");
             
-            SceneManager.CurrentSceneGameComponentsUpdate();
-            SceneManager.GameComponentsUpdate(EngineAssets);
+            SceneManager.CurrentSceneGameObjectsUpdate();
+            SceneManager.GameObjectsUpdate(EngineAssets);
         };
     }
 

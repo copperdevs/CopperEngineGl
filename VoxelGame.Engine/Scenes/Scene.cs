@@ -6,7 +6,7 @@ public class Scene
 {
     public string Name { get; internal set; }
     public Guid SceneId { get; internal set; }
-    public List<GameComponent> Components { get; internal set; }
+    public List<GameObject> GameObjects { get; internal set; }
 
     public static Scene CreateScene(string name, out Guid sceneId)
     {
@@ -30,17 +30,18 @@ public class Scene
     private Scene(string name)
     {
         Name = name;
-        Components = new List<GameComponent>();
+        GameObjects = new List<GameObject>();
+    }
+
+    public void AddComponent<T>() where T : GameComponent, new()
+    {
+        var gameObject = new GameObject();
+        gameObject.AddComponent<T>();
+        AddGameObject(gameObject);
     }
 
     public static implicit operator Guid(Scene scene) => scene.SceneId;
-
-
-    public void AddComponent(GameComponent component)
-    {
-        component.Start();
-        Components.Add(component);
-    }
     
+    public void AddGameObject(GameObject gameObject) => GameObjects.Add(gameObject);
     public void Load() => SceneManager.LoadScene(this);
 }

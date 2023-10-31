@@ -49,28 +49,7 @@ internal static class InfoWindow
                 }
             }
 
-            if (ImGui.CollapsingHeader("Components"))
-            {
-                foreach (var scene in scenes)
-                {
-                    ImGui.Indent();
-                    if (ImGui.CollapsingHeader($"{scene.Item2.Name}"))
-                    {
-                        foreach (var component in scene.Item2.Components)
-                        {
-                            ImGui.Indent();
-                            if (ImGui.Button(component.GetType().Name))
-                            {
-                                Console.WriteLine(component.GetType().Name);
-                            }
-
-                            ImGui.Unindent();
-                        }
-                    }
-
-                    ImGui.Unindent();
-                }
-            }
+            // TODO: Re-add components section
 
             if (ImGui.CollapsingHeader("Input"))
             {

@@ -2,7 +2,7 @@
 
 namespace VoxelGame.Engine.Data;
 
-public struct Transform
+public class Transform
 {
     public Transform() { }
     

@@ -9,7 +9,7 @@ public struct CopperModel
 {
     public Transform Transform { get; private set; }= new()
     {
-        Position = Vector3.One,
+        Position = Vector3.Zero,
         Scale = 1,
         Rotation = Quaternion.Identity
     };

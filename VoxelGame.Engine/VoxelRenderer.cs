@@ -55,8 +55,8 @@ internal static class VoxelRenderer
 
         Models.ForEach(model => model.Render());
         
-        SceneManager.CurrentSceneGameComponentsRender();
-        SceneManager.GameComponentsRender(VoxelEngine.EngineAssets);
+        SceneManager.CurrentSceneGameObjectsRender();
+        SceneManager.GameObjectsRender(VoxelEngine.EngineAssets);
         VoxelEditor.Render();
     }
 

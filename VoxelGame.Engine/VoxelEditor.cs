@@ -115,8 +115,8 @@ internal static class VoxelEditor
         InfoWindow.Render();
         
         imGuiController?.Render();
-        SceneManager.CurrentSceneGameComponentsRenderEditor();
-        SceneManager.GameComponentsRenderEditor(VoxelEngine.EngineAssets);
+        SceneManager.CurrentSceneGameObjectsRenderEditor();
+        SceneManager.GameObjectsRenderEditor(VoxelEngine.EngineAssets);
     }
 
     private static bool showDemoWindow = false;
