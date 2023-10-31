@@ -1,0 +1,107 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Silk.NET" Version="2.18.0" />
+      <PackageReference Include="Silk.NET.Assimp" Version="2.18.0" />
+      <PackageReference Include="Silk.NET.OpenGL.Extensions.ImGui" Version="2.17.1" />
+      <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
+      <PackageReference Include="StbImageSharp" Version="2.27.13" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <None Remove="Resources\test.txt" />
+      <EmbeddedResource Include="Resources\test.txt" />
+      <None Remove="Resources\Fonts\Inter\static\Inter-Black.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\Static\Inter-Black.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-Bold.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\Static\Inter-Bold.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-ExtraBold.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\Static\Inter-ExtraBold.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-ExtraLight.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\Static\Inter-ExtraLight.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-Light.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\Static\Inter-Light.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-Medium.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\Static\Inter-Medium.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-Regular.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\Static\Inter-Regular.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-SemiBold.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\Static\Inter-SemiBold.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-Thin.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\Static\Inter-Thin.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\Inter-VariableFont_slnt,wght.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\Inter-VariableFont_slnt,wght.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\OFL.txt" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\OFL.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\README.txt" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\README.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Shaders\shader.frag" />
+      <EmbeddedResource Include="Resources\Shaders\shader.frag">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Shaders\shader.vert" />
+      <EmbeddedResource Include="Resources\Shaders\shader.vert">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Images\silk.png" />
+      <EmbeddedResource Include="Resources\Images\silk.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Images\copper.png" />
+      <EmbeddedResource Include="Resources\Images\copper.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Models\cube.model" />
+      <EmbeddedResource Include="Resources\Models\cube.model">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+
+
+
+
+
+
+
+
+
+
+    </ItemGroup>
+
+
+
+
+
+
+</Project>
