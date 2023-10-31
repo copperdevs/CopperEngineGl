@@ -12,6 +12,8 @@ using Texture = VoxelGame.Engine.Rendering.Texture;
 
 namespace VoxelGame.Engine;
 
+// TODO: https://github.com/dotnet/Silk.NET/tree/main/examples/CSharp/OpenGL%20Tutorials
+// Lighting and Models
 internal static class VoxelRenderer
 {
     private static bool initialized;
