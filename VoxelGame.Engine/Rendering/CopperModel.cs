@@ -1,21 +1,15 @@
 ﻿using System.Numerics;
 using Silk.NET.OpenGL;
+using VoxelGame.Engine.Components;
 using VoxelGame.Engine.Data;
 using VoxelGame.Engine.Utils;
 
 namespace VoxelGame.Engine.Rendering;
 
-public struct CopperModel
+public class CopperModel : GameComponent 
 {
-    public Transform Transform { get; private set; }= new()
-    {
-        Position = Vector3.Zero,
-        Scale = 1,
-        Rotation = Quaternion.Identity
-    };
+    public Matrix4x4 TransformViewMatrix => Transform?.ViewMatrix ?? Matrix4x4.Identity;
 
-    public readonly Matrix4x4 TransformViewMatrix => Transform.ViewMatrix;
-    
     private readonly Shader shader = VoxelRenderer.Shader;
     public Model Model { get; private set; }
     private readonly Texture texture;
@@ -28,16 +22,9 @@ public struct CopperModel
         Model = new Model(Gl, modelPath);
         
         VoxelRenderer.Models.Add(this);
-
-        Transform = new Transform
-        {
-            Position = Vector3.Zero,
-            Scale = 1,
-            Rotation = Quaternion.Identity
-        };
     }
 
-    internal void Render()
+    public override void Render()
     {
         foreach (var mesh in Model.Meshes)
         {
@@ -52,7 +39,13 @@ public struct CopperModel
             Gl.DrawArrays(PrimitiveType.Triangles, 0, (uint)mesh.Vertices.Length);
         }
     }
-    internal void Dispose()
+
+    public override void Stop()
+    {
+        Dispose();
+    }
+
+    private void Dispose()
     {
         Model.Dispose();
         texture.Dispose();

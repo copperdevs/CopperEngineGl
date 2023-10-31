@@ -14,19 +14,21 @@ public class GameObject
 
     private readonly List<GameComponent> components = new();
 
+    public void AddComponent(GameComponent component)
+    {
+        components.Add(component);
+        component.Transform = Transform;
+        component.Start();
+    }
+    
     public void AddComponent<T>() where T : GameComponent, new()
     {
-        var gameComponent = new T() as GameComponent;
-        components.Add(gameComponent);
-
-        gameComponent.Transform = Transform;
-        
-        gameComponent.Start();
+        AddComponent(new T());
     }
 
-    public T[] GetComponents<T>() where T : GameComponent, new()
+    public GameComponent[] GetComponents<T>() where T : GameComponent, new()
     {
-        return components.Where(c => c.GetType() == typeof(T)).ToArray() as T[] ?? Array.Empty<T>();
+        return components.Where(c => c.GetType() == typeof(T)).ToArray();
     }
 
     public void RemoveComponents<T>() where T : GameComponent, new()

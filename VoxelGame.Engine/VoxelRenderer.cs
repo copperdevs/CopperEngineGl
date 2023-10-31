@@ -63,6 +63,5 @@ internal static class VoxelRenderer
     internal static void Close()
     {
         Shader.Dispose();
-        Models.ForEach(model => model.Dispose());
     }
 }
