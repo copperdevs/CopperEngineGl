@@ -1,7 +1,5 @@
 ﻿using Silk.NET.Assimp;
 using Silk.NET.OpenGL;
-using VoxelGame.Engine.Utils;
-using File = System.IO.File;
 
 namespace VoxelGame.Engine.Rendering;
 
@@ -12,7 +10,7 @@ public class Texture : IDisposable
 
     public string Path { get; set; }
     public TextureType Type { get; }
-    
+
     public unsafe Texture(GL gl, string path, TextureType type = TextureType.None)
     {
         _gl = gl;

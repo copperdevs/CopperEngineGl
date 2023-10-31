@@ -26,5 +26,6 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engin
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Shaders\shader.vert
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Images\silk.png
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Images\copper.png
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Models\cube.model
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Images\copper_tile.png
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Models\cube.obj
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Models\cube.mtl

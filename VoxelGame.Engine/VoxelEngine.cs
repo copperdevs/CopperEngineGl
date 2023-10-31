@@ -35,6 +35,7 @@ public static class VoxelEngine
         {
             SceneManager.CurrentSceneGameComponentsStop();
             SceneManager.GameComponentsStop(EngineAssets);
+            VoxelRenderer.Close();
         };
 
         VoxelWindow.Window!.Update += delta =>
