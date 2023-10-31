@@ -52,8 +52,8 @@ internal static class VoxelRenderer
         Shader.Use();
         Shader.SetUniform("uTexture0", 0);
         
-        var difference = (float) (VoxelWindow.Window!.Time * 100);
-        // var difference = 0;
+        // var difference = (float) (VoxelWindow.Window!.Time * 100);
+        var difference = 0;
 
         var model = Matrix4x4.CreateRotationY(MathUtil.DegreesToRadians(difference)) * Matrix4x4.CreateRotationX(MathUtil.DegreesToRadians(difference));
         var view = Matrix4x4.CreateLookAt(Camera.Position, Camera.Position + Camera.Front, Camera.Up);

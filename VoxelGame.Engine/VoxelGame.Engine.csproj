@@ -87,6 +87,10 @@
       <EmbeddedResource Include="Resources\Models\cube.model">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
+      <None Remove="Resources\Images\copper_tile.png" />
+      <EmbeddedResource Include="Resources\Images\copper_tile.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
 
 
 
