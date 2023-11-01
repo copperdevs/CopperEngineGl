@@ -17,6 +17,7 @@ public class TestingApplication : VoxelApplication
 
         var testCube = new GameObject();
         testCube.AddComponent(new CopperModel("Resources/Images/silk.png", "Resources/Models/cube.obj"));
+        testCube.AddComponent<ReflectionTesting>();
         scene.AddGameObject(testCube);
 
         var testGizmo = new GameObject();

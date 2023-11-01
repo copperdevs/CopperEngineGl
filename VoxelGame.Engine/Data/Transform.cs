@@ -4,11 +4,9 @@ namespace VoxelGame.Engine.Data;
 
 public class Transform
 {
-    public Transform() { }
-    
     public Vector3 Position { get; set; } = Vector3.Zero;
 
-    public float Scale { get; set; } = 1f;
+    public Vector3 Scale { get; set; } = Vector3.Zero;
 
     public Quaternion Rotation { get; set; } = Quaternion.Identity;
 

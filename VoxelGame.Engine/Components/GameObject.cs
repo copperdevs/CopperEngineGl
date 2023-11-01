@@ -8,7 +8,7 @@ public class GameObject
     public Transform Transform { get; private set; } = new()
     {
         Position = Vector3.Zero,
-        Scale = 1,
+        Scale = Vector3.One,
         Rotation = Quaternion.Identity
     };
 

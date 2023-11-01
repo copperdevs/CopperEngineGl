@@ -10,6 +10,7 @@ public static class Log
     public static void Info(object message) => CopperLogger.LogInfo(message);
     public static void Warning(object message) => CopperLogger.LogWarning(message);
     public static void Error(object message) => CopperLogger.LogError(message);
+    public static void Error(Exception message) => CopperLogger.LogError(message);
 }
 
 public static class CopperLogger
@@ -51,6 +52,12 @@ public static class CopperLogger
     {
         if(ErrorLogsEnabled)
             BaseLog("Error", message, LogType.Error);
+    }
+    
+    public static void LogError(Exception message)
+    {
+        if(ErrorLogsEnabled)
+            BaseLog("Error", $"Exception Error. | Source -  {message.Source}\n{message.StackTrace}", LogType.Error);
     }
 
     private static void BaseLog(string prefix, object message, LogType type)

@@ -34,7 +34,8 @@ internal static class InfoWindow
         Tabs.Add(("Scene", SceneTab));
         Tabs.Add(("Input", InputTab));
         Tabs.Add(("Rendering", RenderingTab));
-        Tabs.Add(("Object Browser", ObjectBrowserTab));
+        // very complex compared to everything else so it got moved out
+        Tabs.Add(("Object Browser", ObjectBrowserTab.Render));
         Tabs.Add(("Logs", LogsTab));
         Tabs.Add(("System", SystemInfoTab));
         
@@ -129,27 +130,27 @@ internal static class InfoWindow
         for (var index1 = 0; index1 < VoxelRenderer.Models.Count; index1++)
         {
             var model = VoxelRenderer.Models[index1];
-            if (ImGui.CollapsingHeader($"Model #{index1}"))
+            if (ImGui.CollapsingHeader($"Model #{index1}##{index1}"))
             {
                 ImGui.Indent();
 
-                if (ImGui.CollapsingHeader("Meshes"))
+                if (ImGui.CollapsingHeader($"Meshes##{index1}"))
                 {
                     for (var i = 0; i < model.Model.Meshes.Count; i++)
                     {
                         var mesh = model.Model.Meshes[i];
 
                         ImGui.Indent();
-                        if (ImGui.CollapsingHeader($"Mesh #{i}"))
+                        if (ImGui.CollapsingHeader($"Mesh #{i}##{index1}"))
                         {
                             ImGui.Indent();
-                            if (ImGui.CollapsingHeader("Vertices"))
+                            if (ImGui.CollapsingHeader($"{mesh.Vertices.Length} Vertices##{index1}"))
                             {
                                 ImGui.Indent();
                                 for (var ii = 0; ii < mesh.Vertices.Length; ii++)
                                 {
                                     var vertex = mesh.Vertices[ii];
-                                    ImGui.InputFloat($"Vertex {ii}", ref vertex);
+                                    ImGui.InputFloat($"Vertex {ii}##{index1}", ref vertex);
                                 }
 
                                 ImGui.Unindent();
@@ -158,13 +159,13 @@ internal static class InfoWindow
                             ImGui.Unindent();
 
                             ImGui.Indent();
-                            if (ImGui.CollapsingHeader("Indices"))
+                            if (ImGui.CollapsingHeader($"{mesh.Indices.Length} Indices##{index1}"))
                             {
                                 ImGui.Indent();
                                 for (var ii = 0; ii < mesh.Indices.Length; ii++)
                                 {
                                     var index = (int)mesh.Indices[ii];
-                                    ImGui.InputInt($"Index {ii}", ref index);
+                                    ImGui.InputInt($"Index {ii}##{index1}", ref index);
                                 }
 
                                 ImGui.Unindent();
@@ -180,67 +181,6 @@ internal static class InfoWindow
                 ImGui.Unindent();
             }
         }
-    }
-    
-    private static void ObjectBrowserTab()
-    {
-        if (ImGui.BeginChild("object_browser_objects_window", new Vector2(ImGui.GetWindowWidth()*0.25f, 0), true))
-        {
-            var list = SceneManager.CurrentScene().GameObjects;
-            for (var i = 0; i < list.Count; i++)
-            {
-                var gameObject = list[i];
-
-                if (ImGui.Selectable($"GameObject #{i}"))
-                    currentObjectBrowserTarget = gameObject;
-            }
-            ImGui.EndChild();
-        }
-
-        if (currentObjectBrowserTarget is null) 
-            return;
-        
-        ImGui.SameLine();
-        
-        ImGui.BeginGroup();
-        ImGui.BeginChild("object_browser_inspector_window", new Vector2(0, -ImGui.GetFrameHeightWithSpacing()));
-        
-        
-        if (ImGui.CollapsingHeader("Transform"))
-        {
-            ImGui.Indent();
-
-            var position = currentObjectBrowserTarget.Transform.Position;
-            if(ImGui.DragFloat3("Position", ref position, 0.1f))
-                currentObjectBrowserTarget.Transform.Position = position;
-                    
-            var scale = currentObjectBrowserTarget.Transform.Scale;
-            if(ImGui.DragFloat("Scale", ref scale, 0.1f))
-                currentObjectBrowserTarget.Transform.Scale = scale;
-                    
-            var rotation = currentObjectBrowserTarget.Transform.Rotation.ToEulerAngles();
-            if(ImGui.DragFloat3("Rotation", ref rotation, 0.1f))
-                currentObjectBrowserTarget.Transform.Rotation = rotation.FromEulerAngles();
-            
-            ImGui.Unindent();
-        }
-
-        for (var index = 0; index < currentObjectBrowserTarget.Components.Count; index++)
-        {
-            var component = currentObjectBrowserTarget.Components[index];
-
-            if (ImGui.CollapsingHeader($"{component.GetType().Name}##{index}"))
-            {
-                ImGui.Indent();
-                ImGui.Text(component.GetType().Name);
-                ImGui.Text($"{index}");
-                ImGui.EndTabItem();
-                ImGui.Unindent();
-            }
-        }
-        
-        ImGui.EndChild();
-        ImGui.EndGroup();
     }
 
     private static void LogsTab()
