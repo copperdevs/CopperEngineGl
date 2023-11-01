@@ -2,6 +2,7 @@
 using ImGuiNET;
 using Silk.NET.Input;
 using VoxelGame.Engine.Data;
+using VoxelGame.Engine.Logs;
 
 namespace VoxelGame.Engine.Info;
 
@@ -27,6 +28,8 @@ public static class Input
         if (initialized)
             return;
         initialized = true;
+        
+        Log.Info("Initializing Input");
 
         Input.primaryKeyboard = primaryKeyboard;
         
@@ -94,11 +97,13 @@ public static class Input
     private static void MouseScrollInput(IMouse mouse, ScrollWheel scrollWheel)
     {
         MouseScrollInputActions.ForEach(a => a.Invoke((int)scrollWheel.Y));
+        Log.DeepInfo($"Mouse scroll input - {scrollWheel.Y}");
     }
 
     private static void MouseMoveInput(IMouse mouse, Vector2 position)
     {
         MousePosition = position;
+        Log.DeepInfo($"New mouse position - {position}");
     }
 
     internal static void CheckInput()
@@ -106,6 +111,7 @@ public static class Input
         foreach (var inputAction in DownInputActions.Where(inputAction => IsKeyDown(inputAction.Item1)))
         {
             inputAction.Item2.Invoke();
+            Log.DeepInfo($"Invoking new input action - Key: {inputAction.Item1.ToString()}");
         }
     }
 
@@ -113,7 +119,11 @@ public static class Input
     {
         foreach (var mouse in VoxelWindow.InputContext!.Mice)
         {
+            if((CursorMode)mouseMode == mouse.Cursor.CursorMode)
+                return;
+            
             mouse.Cursor.CursorMode = (CursorMode)mouseMode;
+            Log.DeepInfo($"New mouse cursor state - {mouse.Cursor.CursorMode.ToString()}");
         }
     }
 }

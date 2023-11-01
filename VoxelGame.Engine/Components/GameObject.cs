@@ -12,11 +12,11 @@ public class GameObject
         Rotation = Quaternion.Identity
     };
 
-    private readonly List<GameComponent> components = new();
+    internal readonly List<GameComponent> Components = new();
 
     public void AddComponent(GameComponent component)
     {
-        components.Add(component);
+        Components.Add(component);
         component.Transform = Transform;
         component.Start();
     }
@@ -28,35 +28,35 @@ public class GameObject
 
     public GameComponent[] GetComponents<T>() where T : GameComponent, new()
     {
-        return components.Where(c => c.GetType() == typeof(T)).ToArray();
+        return Components.Where(c => c.GetType() == typeof(T)).ToArray();
     }
 
     public void RemoveComponents<T>() where T : GameComponent, new()
     {
-        components.RemoveAll(gm => gm.GetType() == typeof(T));
+        Components.RemoveAll(gm => gm.GetType() == typeof(T));
     }
 
     internal void Update()
     {
-        var targetComponents = components;
+        var targetComponents = Components;
         targetComponents.ForEach(c => c.Update());
     }
 
     internal void Render()
     {
-        var targetComponents = components;
+        var targetComponents = Components;
         targetComponents.ForEach(c => c.Render());
     }
 
     internal void RenderEditor()
     {
-        var targetComponents = components;
+        var targetComponents = Components;
         targetComponents.ForEach(c => c.RenderEditor());
     }
 
     internal void Stop()
     {
-        var targetComponents = components;
+        var targetComponents = Components;
         targetComponents.ForEach(c => c.Stop());
     }
 }

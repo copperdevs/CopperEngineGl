@@ -49,7 +49,7 @@ internal static class VoxelRenderer
         Shader.Use();
         Shader.SetUniform("uTexture0", 0);
         
-        var camera = VoxelRenderer.Camera;
+        var camera = Camera;
         ViewMatrix = Matrix4x4.CreateLookAt(camera.Position, camera.Position + camera.Front, camera.Up);
         ProjectionMatrix = Matrix4x4.CreatePerspectiveFieldOfView(MathUtil.DegreesToRadians(camera.Zoom), (float)VoxelWindow.Window!.Size.X / (float)VoxelWindow.Window.Size.Y, 0.1f, 100.0f);
 

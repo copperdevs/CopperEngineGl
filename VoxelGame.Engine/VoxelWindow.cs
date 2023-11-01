@@ -7,6 +7,7 @@ using Silk.NET.OpenGL;
 using Silk.NET.OpenGL.Extensions.ImGui;
 using Silk.NET.Windowing;
 using VoxelGame.Engine.Info;
+using VoxelGame.Engine.Logs;
 
 namespace VoxelGame.Engine;
 
@@ -27,6 +28,7 @@ internal static class VoxelWindow
         var options = WindowOptions.Default;
         options.Size = new Vector2D<int>(650, 400);
         options.Title = "VoxelWindow.Testing";
+        options.VSync = false;
         
         Window = Silk.NET.Windowing.Window.Create(options);
 
@@ -39,11 +41,13 @@ internal static class VoxelWindow
             Gl = Window.CreateOpenGL();
             InputContext = Window.CreateInput();
             loadAction.Invoke();
+            Log.Info("Window loaded");
         };
         
         Window.FramebufferResize += s =>
         {
             Gl?.Viewport(s);
+            Log.DeepInfo($"Window frame buffer resize - <{s.X},{s.Y}>");
         };
         
         Window.Render += delta =>
@@ -52,17 +56,42 @@ internal static class VoxelWindow
             Time.TotalTime = (float) Window.Time;
             VoxelEditor.Update(delta);
             VoxelRenderer.Render();
+            Log.DeepInfo($"Window render - {delta}");
         };
 
         Window.Closing += () =>
         {
-            VoxelEditor.imGuiController?.Dispose();
+            VoxelEditor.ImGuiController?.Dispose();
             Gl?.Dispose();
             InputContext?.Dispose();
+            Log.Info("Closing Window");
+        };
+        
+        Window.Move += position =>
+        {
+            Log.DeepInfo($"Window move position - <{position.X},{position.Y}>");
+        };
+
+        Window.Resize += size =>
+        {
+            Log.DeepInfo($"Window resized - <{size.X},{size.Y}>");
+        };
+
+        Window.StateChanged += state =>
+        {
+            Log.DeepInfo($"Window state changed - {state.ToString()}");
         };
     }
 
-    internal static void Run() => Window!.Run();
+    internal static void Run()
+    {
+        Window!.Run();
+        Log.Info("Running the window");
+    }
 
-    public static void SetTitle(string title) => Window!.Title = title;
+    public static void SetTitle(string title)
+    {
+        Log.DeepInfo($"Updating the window title = '{title}'");
+        Window!.Title = title;
+    }
 }

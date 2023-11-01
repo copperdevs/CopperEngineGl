@@ -15,6 +15,7 @@ public static class SceneManager
         List<(Guid, Scene)> scenes = new();
         scenes.AddRange(Scenes.Select(scene => (scene.Key, scene.Value)));
         scenes.Remove((emptyScene, emptyScene));
+        scenes.Remove((VoxelEngine.EngineAssets, VoxelEngine.EngineAssets));
         return scenes;
     }
 

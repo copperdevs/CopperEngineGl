@@ -15,8 +15,10 @@ public static class Program
         scene.Load();
 
         var gameObject = new GameObject();
-        gameObject.AddComponent<GameComponent>();
-        gameObject.RemoveComponents<GameComponent>();
+        for (var i = 0; i < 5; i++)
+        {
+            gameObject.AddComponent<GameComponent>();
+        }
         // gameObject.AddComponent(new CopperModel("Resources/Images/silk.png", "Resources/Models/cube.obj"));
         scene.AddGameObject(gameObject);
         

@@ -53,7 +53,7 @@ internal class CameraController : GameComponent
         }, Input.RegisterType.Down);
         
         // zoom
-        Input.RegisterInput(scroll => {VoxelRenderer.Camera.Zoom = Math.Clamp(VoxelRenderer.Camera.Zoom - scroll, 10.0f, 75f);});
+        Input.RegisterInput(scroll => { if(canMove) VoxelRenderer.Camera.Zoom = Math.Clamp(VoxelRenderer.Camera.Zoom - scroll, 10.0f, 75f); });
     }
 
     public override void Update()

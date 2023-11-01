@@ -95,6 +95,8 @@
       <None Remove="Resources\Models\cube.obj" />
       <EmbeddedResource Include="Resources\Models\cube.obj">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+
+
       </EmbeddedResource>
 
 

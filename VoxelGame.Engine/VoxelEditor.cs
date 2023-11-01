@@ -4,6 +4,7 @@ using Silk.NET.Input;
 using Silk.NET.OpenGL;
 using Silk.NET.OpenGL.Extensions.ImGui;
 using VoxelGame.Engine.Components;
+using VoxelGame.Engine.Logs;
 using VoxelGame.Engine.Scenes;
 
 namespace VoxelGame.Engine;
@@ -11,28 +12,37 @@ namespace VoxelGame.Engine;
 internal static class VoxelEditor
 {
     private static bool initialized;
-    internal static ImGuiController? imGuiController;
-
-    internal static bool imGuiInitialized = false;
+    internal static ImGuiController? ImGuiController { get; private set; }
+    internal static bool ImGuiInitialized  { get; private set; } = false;
+    private static bool showDemoWindow = false;
     
     internal static void Initialize()
     {
         if (initialized)
             return;
         initialized = true;
+            
+        Log.Info("Initializing Voxel Editor");
         
-        imGuiController = new ImGuiController
+        ImGuiController = new ImGuiController
         (
             VoxelWindow.Gl,
             VoxelWindow.Window,
             VoxelWindow.InputContext
         );
+        Log.Info("Created ImGuiController");
         
         LoadConfig();
+        Log.Info("Loading ImGui Config");
         LoadStyle();
+        Log.Info("Loading ImGui Style");
         // LoadFont();
+        // Log.Info("Loading ImGui Font");
 
-        imGuiInitialized = true;
+        ImGuiInitialized = true;
+        
+        InfoWindow.Initialize();
+        Log.Info("Initialized Voxel Editor");
     }
     private static void LoadConfig()
     {
@@ -102,7 +112,8 @@ internal static class VoxelEditor
 
     internal static void Update(double delta)
     {
-        imGuiController?.Update((float) delta);
+        ImGuiController?.Update((float) delta);
+        InfoWindow.Update();
     }
 
     internal static void Render()
@@ -114,21 +125,19 @@ internal static class VoxelEditor
         
         InfoWindow.Render();
         
-        imGuiController?.Render();
+        ImGuiController?.Render();
         SceneManager.CurrentSceneGameObjectsRenderEditor();
         SceneManager.GameObjectsRenderEditor(VoxelEngine.EngineAssets);
     }
 
-    private static bool showDemoWindow = false;
-
-    internal static void RenderMenuBar()
+    private static void RenderMenuBar()
     {
         if (ImGui.BeginMainMenuBar())
         {
             if (ImGui.BeginMenu("Windows"))
             {
                 ImGui.MenuItem("ImGui Demo", null, ref showDemoWindow);
-                ImGui.MenuItem("Info", InfoWindow.IsOpen);
+                ImGui.MenuItem("Info", null, ref InfoWindow.IsOpen);
                 ImGui.EndMenu();
             }
             
