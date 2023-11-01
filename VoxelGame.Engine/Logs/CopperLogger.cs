@@ -42,7 +42,7 @@ public static class CopperLogger
     private static void BaseLog(string prefix, object message, ConsoleColor color)
     {
         Console.ForegroundColor = color;
-        Console.WriteLine($"[{prefix}] {message}");
+        Console.WriteLine($"[{DateTime.Now.ToLongTimeString()}] [{prefix}] {message}");
         Console.ResetColor();
     }
 }

@@ -181,7 +181,7 @@ internal static class InfoWindow
     
     private static void ObjectBrowserTab()
     {
-        if (ImGui.BeginChild("object_browser_objects_window", new Vector2(ImGui.GetWindowWidth()*0.15f, 0), true))
+        if (ImGui.BeginChild("object_browser_objects_window", new Vector2(ImGui.GetWindowWidth()*0.25f, 0), true))
         {
             var list = SceneManager.CurrentScene().GameObjects;
             for (var i = 0; i < list.Count; i++)
@@ -227,6 +227,7 @@ internal static class InfoWindow
             {
                 ImGui.Indent();
                 ImGui.Text(component.GetType().Name);
+                ImGui.Text($"{index}");
                 ImGui.EndTabItem();
                 ImGui.Unindent();
             }
