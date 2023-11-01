@@ -101,6 +101,8 @@
       <None Remove="Resources\Shaders\lighting.frag" />
       <EmbeddedResource Include="Resources\Shaders\lighting.frag">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+
+
       </EmbeddedResource>
 
 

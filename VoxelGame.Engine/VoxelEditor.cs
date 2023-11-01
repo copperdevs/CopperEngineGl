@@ -16,7 +16,7 @@ internal static class VoxelEditor
     internal static bool ImGuiInitialized  { get; private set; } = false;
     private static bool showDemoWindow = false;
 
-    internal static Action RenderEditor;
+    internal static Action? RenderEditor;
     
     internal static void Initialize()
     {
