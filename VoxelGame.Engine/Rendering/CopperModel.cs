@@ -34,8 +34,8 @@ public class CopperModel : GameComponent
             texture?.Bind();
             shader?.SetUniform("uTexture0", 0);
             shader?.SetUniform("uModel", TransformViewMatrix);
-            shader?.SetUniform("uView", VoxelRenderer.ViewMatrix);
-            shader?.SetUniform("uProjection", VoxelRenderer.ProjectionMatrix);
+            shader?.SetUniform("uView", VoxelRenderer.Camera.ViewMatrix);
+            shader?.SetUniform("uProjection", VoxelRenderer.Camera.ProjectionMatrix);
 
             Gl.DrawArrays(PrimitiveType.Triangles, 0, (uint)mesh.Vertices.Length);
         }

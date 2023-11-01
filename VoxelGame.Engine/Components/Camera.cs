@@ -11,4 +11,7 @@ internal class Camera
     internal float Yaw = -90f;
     internal float Pitch = 0f;
     internal float Zoom = 45f;
+    
+    internal Matrix4x4 ViewMatrix;
+    internal Matrix4x4 ProjectionMatrix;
 }

@@ -1,5 +1,7 @@
 ﻿using System.Numerics;
 using ImGuiNET;
+using ImGuizmoNET;
+using VoxelGame.Engine.Editor;
 using VoxelGame.Engine.Info;
 using VoxelGame.Engine.Logs;
 using VoxelGame.Engine.Scenes;
@@ -207,15 +209,15 @@ internal static class InfoWindow
         if (ImGui.CollapsingHeader("Transform"))
         {
             ImGui.Indent();
-            
+
             var position = currentObjectBrowserTarget.Transform.Position;
             if(ImGui.DragFloat3("Position", ref position, 0.1f))
                 currentObjectBrowserTarget.Transform.Position = position;
-                
+                    
             var scale = currentObjectBrowserTarget.Transform.Scale;
             if(ImGui.DragFloat("Scale", ref scale, 0.1f))
                 currentObjectBrowserTarget.Transform.Scale = scale;
-                
+                    
             var rotation = currentObjectBrowserTarget.Transform.Rotation.ToEulerAngles();
             if(ImGui.DragFloat3("Rotation", ref rotation, 0.1f))
                 currentObjectBrowserTarget.Transform.Rotation = rotation.FromEulerAngles();

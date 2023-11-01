@@ -15,8 +15,12 @@ public class TestingApplication : VoxelApplication
         var scene = Scene.CreateScene("Test Scene", out var guid);
         scene.Load();
 
-        var gameObject = new GameObject();
-        gameObject.AddComponent(new CopperModel("Resources/Images/silk.png", "Resources/Models/cube.obj"));
-        scene.AddGameObject(gameObject);
+        var testCube = new GameObject();
+        testCube.AddComponent(new CopperModel("Resources/Images/silk.png", "Resources/Models/cube.obj"));
+        scene.AddGameObject(testCube);
+
+        var testGizmo = new GameObject();
+        testGizmo.AddComponent(new CopperModel("Resources/Images/silk.png", "Resources/Models/bounding_box.obj"));
+        scene.AddGameObject(testGizmo);
     }
 }

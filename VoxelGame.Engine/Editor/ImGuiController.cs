@@ -1,6 +1,8 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+#define ImGuizmo
+
 using System.Numerics;
 using ImGuiNET;
 using Silk.NET.Input;
@@ -8,6 +10,11 @@ using Silk.NET.Maths;
 using Silk.NET.OpenGL;
 using Silk.NET.Windowing;
 using VoxelGame.Engine.Logs;
+
+
+#if ImGuizmo
+using ImGuizmoNET;
+#endif
 
 using Texture = VoxelGame.Engine.Editor.ImGuiTexture;
 using Shader = VoxelGame.Engine.Editor.ImGuiShader;
@@ -38,7 +45,7 @@ public class ImGuiController : IDisposable
     private int _windowWidth;
     private int _windowHeight;
 
-    public IntPtr Context;
+    public IntPtr ImGuiContext;
 
     /// <summary>
     /// Constructs a new ImGuiController.
@@ -90,7 +97,8 @@ public class ImGuiController : IDisposable
 
     public void MakeCurrent()
     {
-        ImGuiNET.ImGui.SetCurrentContext(Context);
+        ImGuiNET.ImGui.SetCurrentContext(ImGuiContext);
+        ImGuizmo.SetImGuiContext(ImGuiContext);
     }
 
     private void Init(GL gl, IView view, IInputContext input)
@@ -101,14 +109,19 @@ public class ImGuiController : IDisposable
         _windowWidth = view.Size.X;
         _windowHeight = view.Size.Y;
 
-        Context = ImGuiNET.ImGui.CreateContext();
-        ImGuiNET.ImGui.SetCurrentContext(Context);
+        ImGuiContext = ImGuiNET.ImGui.CreateContext();
+        ImGuizmo.SetImGuiContext(ImGuiContext);
+        
+        ImGuiNET.ImGui.SetCurrentContext(ImGuiContext);
         ImGuiNET.ImGui.StyleColorsDark();
+        
+        ImGuizmo.SetOrthographic(false);
     }
 
     private void BeginFrame()
     {
         ImGuiNET.ImGui.NewFrame();
+        ImGuizmo.BeginFrame();
         _frameBegun = true;
         _keyboard = _input.Keyboards[0];
         _view.Resize += WindowResized;
@@ -138,18 +151,20 @@ public class ImGuiController : IDisposable
         {
             var oldCtx = ImGuiNET.ImGui.GetCurrentContext();
 
-            if (oldCtx != Context)
+            if (oldCtx != ImGuiContext)
             {
-                ImGuiNET.ImGui.SetCurrentContext(Context);
+                ImGuiNET.ImGui.SetCurrentContext(ImGuiContext);
+                ImGuizmo.SetImGuiContext(ImGuiContext);
             }
 
             _frameBegun = false;
             ImGuiNET.ImGui.Render();
             RenderImDrawData(ImGuiNET.ImGui.GetDrawData());
 
-            if (oldCtx != Context)
+            if (oldCtx != ImGuiContext)
             {
                 ImGuiNET.ImGui.SetCurrentContext(oldCtx);
+                ImGuizmo.SetImGuiContext(oldCtx);
             }
         }
     }
@@ -161,9 +176,10 @@ public class ImGuiController : IDisposable
     {
         var oldCtx = ImGuiNET.ImGui.GetCurrentContext();
 
-        if (oldCtx != Context)
+        if (oldCtx != ImGuiContext)
         {
-            ImGuiNET.ImGui.SetCurrentContext(Context);
+            ImGuiNET.ImGui.SetCurrentContext(ImGuiContext);
+            ImGuizmo.SetImGuiContext(ImGuiContext);
         }
 
         if (_frameBegun)
@@ -176,10 +192,12 @@ public class ImGuiController : IDisposable
 
         _frameBegun = true;
         ImGuiNET.ImGui.NewFrame();
+        ImGuizmo.BeginFrame();
 
-        if (oldCtx != Context)
+        if (oldCtx != ImGuiContext)
         {
             ImGuiNET.ImGui.SetCurrentContext(oldCtx);
+            ImGuizmo.SetImGuiContext(oldCtx);
         }
     }
 
@@ -587,6 +605,6 @@ public class ImGuiController : IDisposable
         _fontTexture.Dispose();
         _shader.Dispose();
 
-        ImGuiNET.ImGui.DestroyContext(Context);
+        ImGuiNET.ImGui.DestroyContext(ImGuiContext);
     }
 }

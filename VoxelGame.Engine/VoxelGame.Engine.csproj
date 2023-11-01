@@ -105,6 +105,14 @@
 
 
       </EmbeddedResource>
+      <None Remove="Resources\Models\bounding_box.obj" />
+      <EmbeddedResource Include="Resources\Models\bounding_box.obj">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Models\bounding_box.mtl" />
+      <EmbeddedResource Include="Resources\Models\bounding_box.mtl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
 
 
 
