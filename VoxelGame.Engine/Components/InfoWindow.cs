@@ -34,6 +34,7 @@ internal static class InfoWindow
         Tabs.Add(("Rendering", RenderingTab));
         Tabs.Add(("Object Browser", ObjectBrowserTab));
         Tabs.Add(("Logs", LogsTab));
+        Tabs.Add(("System", SystemInfoTab));
         
         Log.Info("Initialized Info Window");
     }
@@ -206,16 +207,19 @@ internal static class InfoWindow
         if (ImGui.CollapsingHeader("Transform"))
         {
             ImGui.Indent();
+            
             var position = currentObjectBrowserTarget.Transform.Position;
-            ImGui.DragFloat3("Position", ref position, 0.1f);
-            currentObjectBrowserTarget.Transform.Position = position;
+            if(ImGui.DragFloat3("Position", ref position, 0.1f))
+                currentObjectBrowserTarget.Transform.Position = position;
                 
             var scale = currentObjectBrowserTarget.Transform.Scale;
-            ImGui.DragFloat("Scale", ref scale, 0.1f);
-            currentObjectBrowserTarget.Transform.Scale = scale;
+            if(ImGui.DragFloat("Scale", ref scale, 0.1f))
+                currentObjectBrowserTarget.Transform.Scale = scale;
                 
-            var rotation = currentObjectBrowserTarget.Transform.Rotation.ToVector();
-            ImGui.DragFloat4("Rotation", ref rotation, 0.1f);
+            var rotation = currentObjectBrowserTarget.Transform.Rotation.ToEulerAngles();
+            if(ImGui.DragFloat3("Rotation", ref rotation, 0.1f))
+                currentObjectBrowserTarget.Transform.Rotation = rotation.FromEulerAngles();
+            
             ImGui.Unindent();
         }
 
