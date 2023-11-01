@@ -14,10 +14,12 @@ namespace VoxelGame.Engine;
 internal static class VoxelWindow
 {
     private static bool initialized;
+    internal static bool WindowLoaded { get; private set; }
 
     internal static IWindow? Window;
     internal static GL? Gl;
     internal static IInputContext? InputContext;
+    
     
     internal static void Initialize(Action loadAction)
     {
@@ -42,6 +44,7 @@ internal static class VoxelWindow
             InputContext = Window.CreateInput();
             loadAction.Invoke();
             Log.Info("Window loaded");
+            WindowLoaded = true;
         };
         
         Window.FramebufferResize += s =>
@@ -65,6 +68,7 @@ internal static class VoxelWindow
             Gl?.Dispose();
             InputContext?.Dispose();
             Log.Info("Closing Window");
+            WindowLoaded = false;
         };
         
         Window.Move += position =>

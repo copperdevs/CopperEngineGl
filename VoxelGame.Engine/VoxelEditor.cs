@@ -15,6 +15,8 @@ internal static class VoxelEditor
     internal static ImGuiController? ImGuiController { get; private set; }
     internal static bool ImGuiInitialized  { get; private set; } = false;
     private static bool showDemoWindow = false;
+
+    internal static Action RenderEditor;
     
     internal static void Initialize()
     {
@@ -125,6 +127,7 @@ internal static class VoxelEditor
             ImGui.ShowDemoWindow(ref showDemoWindow);
         
         InfoWindow.Render();
+        RenderEditor?.Invoke();
         
         ImGuiController?.Render();
         SceneManager.CurrentSceneGameObjectsRenderEditor();
