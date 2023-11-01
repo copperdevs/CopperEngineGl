@@ -28,7 +28,8 @@ internal static class VoxelEditor
         (
             VoxelWindow.Gl,
             VoxelWindow.Window,
-            VoxelWindow.InputContext
+            VoxelWindow.InputContext,
+            new ImGuiFontConfig("Resources/Fonts/Inter/static/Inter-Regular.ttf", 15)
         );
         Log.Info("Created ImGuiController");
         
