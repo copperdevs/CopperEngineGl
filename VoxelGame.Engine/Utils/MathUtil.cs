@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Diagnostics.Contracts;
+using System.Numerics;
 
 namespace VoxelGame.Engine.Utils;
 
@@ -53,5 +54,11 @@ public static class MathUtil
         quaternion.Z = cr * cp * sy - sr * sp * cy;
 
         return quaternion;
+    }
+    
+    [Pure]
+    public static float Clamp(float value, float min, float max)
+    {
+        return value < min ? min : value > max ? max : value;
     }
 }

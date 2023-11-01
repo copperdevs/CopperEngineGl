@@ -1,4 +1,6 @@
-﻿using VoxelGame.Engine.Utils;
+﻿using System.Diagnostics;
+using Silk.NET.OpenGL;
+using VoxelGame.Engine.Utils;
 
 namespace VoxelGame.Engine.Logs;
 
@@ -60,5 +62,15 @@ public static class CopperLogger
         Logs.Add((logMessage, type));
         
         Console.ResetColor();
+    }
+    
+    [Conditional("DEBUG")]
+    public static void CheckGlError(this GL gl, string title)
+    {
+        var error = gl.GetError();
+        if (error != GLEnum.NoError)
+        {
+            Debug.Print($"{title}: {error}");
+        }
     }
 }

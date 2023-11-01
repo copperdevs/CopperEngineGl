@@ -2,42 +2,6 @@
   "version": 3,
   "targets": {
     "net7.0": {
-      "ImGui.NET/1.88.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Buffers": "4.4.0",
-          "System.Numerics.Vectors": "4.4.0",
-          "System.Runtime.CompilerServices.Unsafe": "4.4.0"
-        },
-        "compile": {
-          "lib/net6.0/ImGui.NET.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/ImGui.NET.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/linux-x64/native/libcimgui.so": {
-            "assetType": "native",
-            "rid": "linux-x64"
-          },
-          "runtimes/osx/native/libcimgui.dylib": {
-            "assetType": "native",
-            "rid": "osx"
-          },
-          "runtimes/win-x64/native/cimgui.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          },
-          "runtimes/win-x86/native/cimgui.dll": {
-            "assetType": "native",
-            "rid": "win-x86"
-          }
-        }
-      },
       "Microsoft.CSharp/4.7.0": {
         "type": "package",
         "compile": {
@@ -173,22 +137,6 @@
           }
         }
       },
-      "Silk.NET.Input.Extensions/2.17.1": {
-        "type": "package",
-        "dependencies": {
-          "Silk.NET.Input.Common": "2.17.1"
-        },
-        "compile": {
-          "lib/net5.0/Silk.NET.Input.Extensions.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net5.0/Silk.NET.Input.Extensions.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Silk.NET.Input.Glfw/2.18.0": {
         "type": "package",
         "dependencies": {
@@ -267,26 +215,6 @@
         },
         "runtime": {
           "lib/net5.0/Silk.NET.OpenGL.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "Silk.NET.OpenGL.Extensions.ImGui/2.17.1": {
-        "type": "package",
-        "dependencies": {
-          "ImGui.NET": "1.88.0",
-          "Silk.NET.Input.Common": "2.17.1",
-          "Silk.NET.Input.Extensions": "2.17.1",
-          "Silk.NET.OpenGL": "2.17.1",
-          "Silk.NET.Windowing.Common": "2.17.1"
-        },
-        "compile": {
-          "lib/net5.0/Silk.NET.OpenGL.Extensions.ImGui.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net5.0/Silk.NET.OpenGL.Extensions.ImGui.dll": {
             "related": ".xml"
           }
         }
@@ -512,6 +440,91 @@
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
       },
+      "Twizzle.ImGui.NET/1.89.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.4.0",
+          "System.Numerics.Vectors": "4.4.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.4.0"
+        },
+        "compile": {
+          "lib/net7.0/ImGui.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/ImGui.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libcimgui.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx/native/libcimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win-x64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/cimgui.pdb": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Twizzle.ImGuizmo.NET/1.89.4.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.4.0",
+          "System.Numerics.Vectors": "4.4.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.4.0",
+          "Twizzle.ImGui.NET": "1.89.4"
+        },
+        "compile": {
+          "lib/net7.0/ImGuizmo.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/ImGuizmo.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libcimguizmo.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx/native/libcimguizmo.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win-x64/native/cimguizmo.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/cimguizmo.pdb": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimguizmo.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/cimguizmo.pdb": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
       "Ultz.Native.Assimp/5.3.1": {
         "type": "package",
         "compile": {
@@ -608,26 +621,6 @@
     }
   },
   "libraries": {
-    "ImGui.NET/1.88.0": {
-      "sha512": "5pYlZ4juw1+HaWD8sM8aPqUFcS3b1SHDCXBxfZ02ID96SKHp1icAKKiS0VJA9MbSATQGQd9lAAkY5p8JZGzomA==",
-      "type": "package",
-      "path": "imgui.net/1.88.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/net40/ImGui.NET.targets",
-        "imgui.net.1.88.0.nupkg.sha512",
-        "imgui.net.nuspec",
-        "lib/net6.0/ImGui.NET.dll",
-        "lib/net6.0/ImGui.NET.xml",
-        "lib/netstandard2.0/ImGui.NET.dll",
-        "lib/netstandard2.0/ImGui.NET.xml",
-        "runtimes/linux-x64/native/libcimgui.so",
-        "runtimes/osx/native/libcimgui.dylib",
-        "runtimes/win-x64/native/cimgui.dll",
-        "runtimes/win-x86/native/cimgui.dll"
-      ]
-    },
     "Microsoft.CSharp/4.7.0": {
       "sha512": "pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
       "type": "package",
@@ -857,27 +850,6 @@
         "silkdotnet_v3.png"
       ]
     },
-    "Silk.NET.Input.Extensions/2.17.1": {
-      "sha512": "QRQrHsLdqby+lwxajkMyAUOQoDreDAwFRyzrJPiaYewYx8AqQ8toZL0Rm03Lt/cRHTtqltURc1yqtNDIU/hLGA==",
-      "type": "package",
-      "path": "silk.net.input.extensions/2.17.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "lib/net5.0/Silk.NET.Input.Extensions.dll",
-        "lib/net5.0/Silk.NET.Input.Extensions.xml",
-        "lib/netcoreapp3.1/Silk.NET.Input.Extensions.dll",
-        "lib/netcoreapp3.1/Silk.NET.Input.Extensions.xml",
-        "lib/netstandard2.0/Silk.NET.Input.Extensions.dll",
-        "lib/netstandard2.0/Silk.NET.Input.Extensions.xml",
-        "lib/netstandard2.1/Silk.NET.Input.Extensions.dll",
-        "lib/netstandard2.1/Silk.NET.Input.Extensions.xml",
-        "silk.net.input.extensions.2.17.1.nupkg.sha512",
-        "silk.net.input.extensions.nuspec",
-        "silkdotnet_v3.png"
-      ]
-    },
     "Silk.NET.Input.Glfw/2.18.0": {
       "sha512": "lObdctX7h9Ea+tio751v1gh2U9W996DRg/u7gyUXVf8f/RoxIyCVdVYbXr6UneEZXCOEZlqERssDaq120waMxg==",
       "type": "package",
@@ -984,27 +956,6 @@
         "lib/netstandard2.1/Silk.NET.OpenGL.xml",
         "silk.net.opengl.2.18.0.nupkg.sha512",
         "silk.net.opengl.nuspec",
-        "silkdotnet_v3.png"
-      ]
-    },
-    "Silk.NET.OpenGL.Extensions.ImGui/2.17.1": {
-      "sha512": "pfADp5/tDR/iJcsvaMAQ+wEtsEUnIwonmTYcTUP6StiDAakdlv69q90PCrxV87qjsff/8PPkAz5RXBtmqN2m1Q==",
-      "type": "package",
-      "path": "silk.net.opengl.extensions.imgui/2.17.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "lib/net5.0/Silk.NET.OpenGL.Extensions.ImGui.dll",
-        "lib/net5.0/Silk.NET.OpenGL.Extensions.ImGui.xml",
-        "lib/netcoreapp3.1/Silk.NET.OpenGL.Extensions.ImGui.dll",
-        "lib/netcoreapp3.1/Silk.NET.OpenGL.Extensions.ImGui.xml",
-        "lib/netstandard2.0/Silk.NET.OpenGL.Extensions.ImGui.dll",
-        "lib/netstandard2.0/Silk.NET.OpenGL.Extensions.ImGui.xml",
-        "lib/netstandard2.1/Silk.NET.OpenGL.Extensions.ImGui.dll",
-        "lib/netstandard2.1/Silk.NET.OpenGL.Extensions.ImGui.xml",
-        "silk.net.opengl.extensions.imgui.2.17.1.nupkg.sha512",
-        "silk.net.opengl.extensions.imgui.nuspec",
         "silkdotnet_v3.png"
       ]
     },
@@ -1419,6 +1370,56 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Twizzle.ImGui.NET/1.89.4": {
+      "sha512": "/6zb43KRJqZWh+J0/WqyRSH7SMrRRAto9+MZoNZ9RsojnZz3Af5TUzP4udg+FVIJVmZcEXaKKsY3Vvzhjikj4g==",
+      "type": "package",
+      "path": "twizzle.imgui.net/1.89.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "build/net40/ImGui.NET.targets",
+        "lib/net6.0/ImGui.NET.dll",
+        "lib/net6.0/ImGui.NET.xml",
+        "lib/net7.0/ImGui.NET.dll",
+        "lib/net7.0/ImGui.NET.xml",
+        "lib/netstandard2.0/ImGui.NET.dll",
+        "lib/netstandard2.0/ImGui.NET.xml",
+        "runtimes/linux-x64/native/libcimgui.so",
+        "runtimes/osx/native/libcimgui.dylib",
+        "runtimes/win-x64/native/cimgui.dll",
+        "runtimes/win-x64/native/cimgui.pdb",
+        "runtimes/win-x86/native/cimgui.dll",
+        "twizzle.imgui.net.1.89.4.nupkg.sha512",
+        "twizzle.imgui.net.nuspec"
+      ]
+    },
+    "Twizzle.ImGuizmo.NET/1.89.4.1": {
+      "sha512": "LUFkfUe9TB4Aoe5o0dYkTmkqRJMo8y441IjvnNNIbQM0YCqQFjkDgOWxKvMP7aq5guUqSO1jd4qxHQaeKm82sw==",
+      "type": "package",
+      "path": "twizzle.imguizmo.net/1.89.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "lib/net6.0/ImGuizmo.NET.dll",
+        "lib/net6.0/ImGuizmo.NET.xml",
+        "lib/net7.0/ImGuizmo.NET.dll",
+        "lib/net7.0/ImGuizmo.NET.xml",
+        "lib/netstandard2.0/ImGuizmo.NET.dll",
+        "lib/netstandard2.0/ImGuizmo.NET.xml",
+        "runtimes/linux-x64/native/libcimguizmo.so",
+        "runtimes/osx/native/libcimguizmo.dylib",
+        "runtimes/win-x64/native/cimguizmo.dll",
+        "runtimes/win-x64/native/cimguizmo.pdb",
+        "runtimes/win-x86/native/cimguizmo.dll",
+        "runtimes/win-x86/native/cimguizmo.pdb",
+        "twizzle.imguizmo.net.1.89.4.1.nupkg.sha512",
+        "twizzle.imguizmo.net.nuspec"
+      ]
+    },
     "Ultz.Native.Assimp/5.3.1": {
       "sha512": "tHtrz88fhXPZAj0Szd/rpf0d2mmDNYKs+GhPH8Aoyo7TgyMndKrzMyA/6vK/5fwE0hV5Padsa2quZKTNAn++YQ==",
       "type": "package",
@@ -1487,9 +1488,10 @@
     "net7.0": [
       "Silk.NET >= 2.18.0",
       "Silk.NET.Assimp >= 2.18.0",
-      "Silk.NET.OpenGL.Extensions.ImGui >= 2.17.1",
       "SixLabors.ImageSharp >= 3.0.2",
-      "StbImageSharp >= 2.27.13"
+      "StbImageSharp >= 2.27.13",
+      "Twizzle.ImGui.NET >= 1.89.4",
+      "Twizzle.ImGuizmo.NET >= 1.89.4.1"
     ]
   },
   "packageFolders": {
@@ -1537,10 +1539,6 @@
             "target": "Package",
             "version": "[2.18.0, )"
           },
-          "Silk.NET.OpenGL.Extensions.ImGui": {
-            "target": "Package",
-            "version": "[2.17.1, )"
-          },
           "SixLabors.ImageSharp": {
             "target": "Package",
             "version": "[3.0.2, )"
@@ -1548,6 +1546,14 @@
           "StbImageSharp": {
             "target": "Package",
             "version": "[2.27.13, )"
+          },
+          "Twizzle.ImGui.NET": {
+            "target": "Package",
+            "version": "[1.89.4, )"
+          },
+          "Twizzle.ImGuizmo.NET": {
+            "target": "Package",
+            "version": "[1.89.4.1, )"
           }
         },
         "imports": [

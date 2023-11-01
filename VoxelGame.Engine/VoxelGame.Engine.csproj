@@ -10,9 +10,10 @@
     <ItemGroup>
       <PackageReference Include="Silk.NET" Version="2.18.0" />
       <PackageReference Include="Silk.NET.Assimp" Version="2.18.0" />
-      <PackageReference Include="Silk.NET.OpenGL.Extensions.ImGui" Version="2.17.1" />
       <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
       <PackageReference Include="StbImageSharp" Version="2.27.13" />
+      <PackageReference Include="Twizzle.ImGui.NET" Version="1.89.4" />
+      <PackageReference Include="Twizzle.ImGuizmo.NET" Version="1.89.4.1" />
     </ItemGroup>
 
 

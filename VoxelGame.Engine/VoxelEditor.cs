@@ -1,9 +1,7 @@
 ﻿using System.Numerics;
 using ImGuiNET;
-using Silk.NET.Input;
-using Silk.NET.OpenGL;
-using Silk.NET.OpenGL.Extensions.ImGui;
 using VoxelGame.Engine.Components;
+using VoxelGame.Engine.Editor;
 using VoxelGame.Engine.Logs;
 using VoxelGame.Engine.Scenes;
 
