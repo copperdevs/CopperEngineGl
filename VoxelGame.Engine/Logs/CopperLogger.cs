@@ -1,4 +1,6 @@
-﻿namespace VoxelGame.Engine.Logs;
+﻿using VoxelGame.Engine.Utils;
+
+namespace VoxelGame.Engine.Logs;
 
 public static class Log
 {
@@ -14,35 +16,49 @@ public static class CopperLogger
     public static bool InfoLogsEnabled = true;
     public static bool WarningLogsEnabled = true;
     public static bool ErrorLogsEnabled = true;
+
+    internal static List<(string, LogType)> Logs = new();
+
+    internal enum LogType
+    {
+        DeepInfo,
+        Info,
+        Warning,
+        Error
+    }
     
     public static void LogDeepInfo(object message)
     {
         if(DeepInfoLogsEnabled)
-            BaseLog("Info", message, ConsoleColor.DarkCyan);
+            BaseLog("Info", message, LogType.DeepInfo);
     }
     
     public static void LogInfo(object message)
     {
         if(InfoLogsEnabled)
-            BaseLog("Info", message, ConsoleColor.DarkGray);
+            BaseLog("Info", message, LogType.Info);
     }
 
     public static void LogWarning(object message)
     {
         if(WarningLogsEnabled)
-            BaseLog("Warning", message, ConsoleColor.DarkYellow);
+            BaseLog("Warning", message, LogType.Warning);
     }
 
     public static void LogError(object message)
     {
         if(ErrorLogsEnabled)
-            BaseLog("Error", message, ConsoleColor.DarkRed);
+            BaseLog("Error", message, LogType.Error);
     }
 
-    private static void BaseLog(string prefix, object message, ConsoleColor color)
+    private static void BaseLog(string prefix, object message, LogType type)
     {
-        Console.ForegroundColor = color;
-        Console.WriteLine($"[{DateTime.Now.ToLongTimeString()}] [{prefix}] {message}");
+        Console.ForegroundColor = type.ToConsoleColor();
+        
+        var logMessage = $"[{DateTime.Now.ToLongTimeString()}] [{prefix}] {message}";
+        Console.WriteLine(logMessage);
+        Logs.Add((logMessage, type));
+        
         Console.ResetColor();
     }
 }

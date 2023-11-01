@@ -207,15 +207,15 @@ internal static class InfoWindow
         {
             ImGui.Indent();
             var position = currentObjectBrowserTarget.Transform.Position;
-            ImGui.DragFloat3("Position", ref position);
+            ImGui.DragFloat3("Position", ref position, 0.1f);
             currentObjectBrowserTarget.Transform.Position = position;
                 
             var scale = currentObjectBrowserTarget.Transform.Scale;
-            ImGui.DragFloat("Scale", ref scale);
+            ImGui.DragFloat("Scale", ref scale, 0.1f);
             currentObjectBrowserTarget.Transform.Scale = scale;
                 
             var rotation = currentObjectBrowserTarget.Transform.Rotation.ToVector();
-            ImGui.DragFloat4("Rotation", ref rotation);
+            ImGui.DragFloat4("Rotation", ref rotation, 0.1f);
             ImGui.Unindent();
         }
 
@@ -243,5 +243,28 @@ internal static class InfoWindow
         ImGui.Checkbox("Info Logs Enabled", ref CopperLogger.InfoLogsEnabled);
         ImGui.Checkbox("Warning Logs Enabled", ref CopperLogger.WarningLogsEnabled);
         ImGui.Checkbox("Error Logs Enabled", ref CopperLogger.ErrorLogsEnabled);
+
+        if (ImGui.CollapsingHeader("Logs"))
+        {
+            ImGui.Indent();
+
+            foreach (var logs in CopperLogger.Logs)
+            {
+                // ImGui.Text(logs.Item1);
+                ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
+            }
+            
+            ImGui.Unindent();
+        }
+    }
+
+    private static void SystemInfoTab()
+    {
+        ImGui.LabelText("User Name", SystemInfo.UserName);
+        ImGui.LabelText("Machine Name", SystemInfo.MachineName);
+        ImGui.LabelText("CPU", SystemInfo.Cpu);
+        ImGui.LabelText("Memory Size", SystemInfo.MemorySize.ToString());
+        ImGui.LabelText("Threads", SystemInfo.Threads.ToString());
+        ImGui.LabelText("OS", SystemInfo.Os);
     }
 }
