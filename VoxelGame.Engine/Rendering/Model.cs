@@ -8,12 +8,15 @@ namespace VoxelGame.Engine.Rendering;
 
 public class Model : IDisposable
 {
+    internal Guid Id;
+    
     public Model(GL gl, string path, bool gamma = false)
     {
         var assimp = Silk.NET.Assimp.Assimp.GetApi();
         _assimp = assimp;
         _gl = gl;
         LoadModel(path);
+        Id = Guid.NewGuid();
     }
 
     private readonly GL _gl;

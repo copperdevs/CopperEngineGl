@@ -21,8 +21,6 @@ internal static class VoxelRenderer
     private static GL Gl => VoxelWindow.Gl!;
     internal static Shader Shader { get; private set; }
 
-    internal static readonly List<CopperModel> Models = new();
-    internal static bool ModelReady = false;
     internal static Action LoadPreModels;
     
     
@@ -37,11 +35,6 @@ internal static class VoxelRenderer
         var vertShader = ResourcesLoader.LoadTextResourceDirect("VoxelGame.Engine.Resources.Shaders.shader.vert");
         var fragShader = ResourcesLoader.LoadTextResourceDirect("VoxelGame.Engine.Resources.Shaders.shader.frag");
         Shader = new Shader(Gl, vertShader, fragShader);
-
-        ModelReady = true;
-        LoadPreModels?.Invoke();
-
-        // var model = new CopperModel("Resources/Images/silk.png", "Resources/Models/cube.obj");
     }
     
     internal static void Render()
@@ -56,8 +49,6 @@ internal static class VoxelRenderer
         var camera = Camera;
         Camera.ViewMatrix = Matrix4x4.CreateLookAt(camera.Position, camera.Position + camera.Front, camera.Up);
         Camera.ProjectionMatrix = Matrix4x4.CreatePerspectiveFieldOfView(MathUtil.DegreesToRadians(camera.Zoom), (float)VoxelWindow.Window!.Size.X / (float)VoxelWindow.Window.Size.Y, 0.1f, 100.0f);
-
-        Models.ForEach(model => model.Render());
         
         SceneManager.CurrentSceneGameObjectsRender();
         SceneManager.GameObjectsRender(VoxelEngine.EngineAssets);

@@ -8,6 +8,10 @@ using VoxelGame.Engine.Scenes;
 
 namespace VoxelGame.Engine;
 
+// TODO: add physics :3
+// https://github.com/bepu/bepuphysics2/tree/master
+// https://github.com/bepu/bepuphysics2/blob/master/Documentation/GettingStarted.md
+// https://github.com/bepu/bepuphysics2/blob/master/Demos/Demos/SimpleSelfContainedDemo.cs
 public static class VoxelEngine
 {
     private static bool initialized;

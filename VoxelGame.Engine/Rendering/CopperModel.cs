@@ -7,22 +7,41 @@ using VoxelGame.Engine.Utils;
 
 namespace VoxelGame.Engine.Rendering;
 
-public class CopperModel : GameComponent 
+public class CopperModel : GameComponent
 {
+    internal Guid Id;
+    
+    private static readonly Dictionary<string, Model> ModelLibrary = new();
+    private static readonly Dictionary<string, Texture> TextureLibrary = new();
+    
     public Matrix4x4 TransformViewMatrix => Transform?.ViewMatrix ?? Matrix4x4.Identity;
-
     private readonly Shader? shader = VoxelRenderer.Shader;
     public Model? Model { get; private set; }
     private Texture? texture;
-
     private static readonly GL Gl = VoxelWindow.Gl!;
     
 
     public CopperModel(string texturePath, string modelPath)
     {
-        texture = new Texture(Gl, texturePath);
-        Model = new Model(Gl, modelPath);
-        VoxelRenderer.Models.Add(this);
+        if (ModelLibrary.TryGetValue(modelPath, out var modelValue))
+            Model = modelValue;
+        else
+        {
+            var loadedModel = new Model(Gl, modelPath);
+            ModelLibrary.Add(modelPath, loadedModel);
+            Model = loadedModel;
+        }
+        
+        if (TextureLibrary.TryGetValue(texturePath, out var textureValue))
+            texture = textureValue;
+        else
+        {
+            var loadedTexture = new Texture(Gl, texturePath);
+            TextureLibrary.Add(texturePath, loadedTexture);
+            texture = loadedTexture;
+        }
+
+        Id = Model.Id;
     }
 
     public override void Render()

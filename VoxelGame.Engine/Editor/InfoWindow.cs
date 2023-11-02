@@ -4,6 +4,7 @@ using ImGuizmoNET;
 using VoxelGame.Engine.Editor;
 using VoxelGame.Engine.Info;
 using VoxelGame.Engine.Logs;
+using VoxelGame.Engine.Rendering;
 using VoxelGame.Engine.Scenes;
 using VoxelGame.Engine.Utils;
 
@@ -123,13 +124,17 @@ internal static class InfoWindow
 
     private static void RenderingTab()
     {
-        ImGui.LabelText("Model Count", $"{VoxelRenderer.Models.Count}");
+        var models = new List<CopperModel>();
+        SceneManager.CurrentScene().GameObjects.ForEach(gm => gm.Components.ForEach(c => { if (c.GetType() == typeof(CopperModel)) models.Add((CopperModel)c); }));
+        // var models = VoxelRenderer.Models.Distinct().ToList();
+        
+        ImGui.LabelText("Model Count", $"{models.Count}");
 
         ImGui.Separator();
-
-        for (var index1 = 0; index1 < VoxelRenderer.Models.Count; index1++)
+        
+        for (var index1 = 0; index1 < models.Count; index1++)
         {
-            var model = VoxelRenderer.Models[index1];
+            var model = models[index1];
             if (ImGui.CollapsingHeader($"Model #{index1}##{index1}"))
             {
                 ImGui.Indent();

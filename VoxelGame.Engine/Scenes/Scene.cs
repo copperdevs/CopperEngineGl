@@ -35,13 +35,19 @@ public class Scene
 
     public void AddComponent<T>() where T : GameComponent, new()
     {
-        var gameObject = new GameObject();
+        var gameObject = new GameObject(this);
         gameObject.AddComponent<T>();
-        AddGameObject(gameObject);
+        GameObjects.Add(gameObject);
     }
 
     public static implicit operator Guid(Scene scene) => scene.SceneId;
     
-    public void AddGameObject(GameObject gameObject) => GameObjects.Add(gameObject);
     public void Load() => SceneManager.LoadScene(this);
+
+    public GameObject CreateGameObject()
+    {
+        var gameObject = new GameObject(this);
+        GameObjects.Add(gameObject);
+        return gameObject;
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using VoxelGame.Engine;
+using VoxelGame.Engine.Logs;
 
 namespace VoxelGame.Testing;
 

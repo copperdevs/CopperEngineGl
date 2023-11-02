@@ -1,10 +1,16 @@
 ﻿using System.Numerics;
 using VoxelGame.Engine.Data;
+using VoxelGame.Engine.Scenes;
 
 namespace VoxelGame.Engine.Components;
 
 public class GameObject
 {
+    internal GameObject(Scene parentScene)
+    {
+        ParentScene = parentScene;
+    }
+    
     public Transform Transform { get; private set; } = new()
     {
         Position = Vector3.Zero,
@@ -13,6 +19,7 @@ public class GameObject
     };
 
     internal readonly List<GameComponent> Components = new();
+    internal Scene ParentScene;
 
     public void AddComponent(GameComponent component)
     {

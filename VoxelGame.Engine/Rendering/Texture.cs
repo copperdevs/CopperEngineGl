@@ -5,6 +5,8 @@ namespace VoxelGame.Engine.Rendering;
 
 public class Texture : IDisposable
 {
+    internal Guid Id;
+    
     private uint _handle;
     private GL _gl;
 
@@ -36,6 +38,8 @@ public class Texture : IDisposable
         }
 
         SetParameters();
+            
+        Id = Guid.NewGuid();
     }
 
     public unsafe Texture(GL gl, Span<byte> data, uint width, uint height)
