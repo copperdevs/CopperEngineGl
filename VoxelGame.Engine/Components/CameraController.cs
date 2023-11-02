@@ -9,62 +9,64 @@ namespace VoxelGame.Engine.Components;
 internal class CameraController : GameComponent
 {
     private static Vector2 lastMousePosition;
-    private const float MoveSpeed = 2.5f;
-    private static float targetMoveSpeed;
-
-    private static bool canMove = false;
+    public static float NormalMoveSpeed = 5f;
+    public static float FastMoveSpeed = 15f;
+    
+    public static bool MoveFast => Input.IsKeyDown(Key.ShiftLeft);
+    public static float TargetMoveSpeed { get; private set; }
+    public static bool CanMove { get; private set; } = false;
 
     public override void Start()
     {
         //forward 
         Input.RegisterInput(Key.W, () =>
         {
-            if(canMove) VoxelRenderer.Camera.Position += targetMoveSpeed * VoxelRenderer.Camera.Front;
+            if(CanMove) VoxelRenderer.Camera.Position += TargetMoveSpeed * VoxelRenderer.Camera.Front;
         }, Input.RegisterType.Down);
         
         // back
         Input.RegisterInput(Key.S, () =>
         {
-            if(canMove) VoxelRenderer.Camera.Position -= targetMoveSpeed * VoxelRenderer.Camera.Front;
+            if(CanMove) VoxelRenderer.Camera.Position -= TargetMoveSpeed * VoxelRenderer.Camera.Front;
         }, Input.RegisterType.Down);
         
         // left
         Input.RegisterInput(Key.A, () =>
         {
-            if(canMove) VoxelRenderer.Camera.Position -= Vector3.Normalize(Vector3.Cross(VoxelRenderer.Camera.Front, VoxelRenderer.Camera.Up)) * targetMoveSpeed;
+            if(CanMove) VoxelRenderer.Camera.Position -= Vector3.Normalize(Vector3.Cross(VoxelRenderer.Camera.Front, VoxelRenderer.Camera.Up)) * TargetMoveSpeed;
         }, Input.RegisterType.Down);
         
         // right
         Input.RegisterInput(Key.D, () =>
         {
-            if(canMove) VoxelRenderer.Camera.Position += Vector3.Normalize(Vector3.Cross(VoxelRenderer.Camera.Front, VoxelRenderer.Camera.Up)) * targetMoveSpeed;
+            if(CanMove) VoxelRenderer.Camera.Position += Vector3.Normalize(Vector3.Cross(VoxelRenderer.Camera.Front, VoxelRenderer.Camera.Up)) * TargetMoveSpeed;
         }, Input.RegisterType.Down);
         
         // up
         Input.RegisterInput(Key.Space, () =>
         {
-            if(canMove) VoxelRenderer.Camera.Position += targetMoveSpeed * VoxelRenderer.Camera.Up;
+            if(CanMove) VoxelRenderer.Camera.Position += TargetMoveSpeed * VoxelRenderer.Camera.Up;
         }, Input.RegisterType.Down);
         
         // down
         Input.RegisterInput(Key.ControlLeft, () =>
         {
-            if(canMove) VoxelRenderer.Camera.Position -= targetMoveSpeed * VoxelRenderer.Camera.Up;
+            if(CanMove) VoxelRenderer.Camera.Position -= TargetMoveSpeed * VoxelRenderer.Camera.Up;
         }, Input.RegisterType.Down);
         
         // zoom
-        Input.RegisterInput(scroll => { if(canMove) VoxelRenderer.Camera.Zoom = Math.Clamp(VoxelRenderer.Camera.Zoom - scroll, 10.0f, 75f); });
+        // Input.RegisterInput(scroll => { if(CanMove) VoxelRenderer.Camera.Zoom = Math.Clamp(VoxelRenderer.Camera.Zoom - scroll, 10.0f, 75f); });
     }
 
     public override void Update()
     {
-        targetMoveSpeed = MoveSpeed * Time.DeltaTime;
+        TargetMoveSpeed = MoveFast ? FastMoveSpeed * Time.DeltaTime : NormalMoveSpeed * Time.DeltaTime;
 
-        canMove = Input.IsKeyDown(MouseButton.Right);
+        CanMove = Input.IsKeyDown(MouseButton.Right);
         
         // Console.WriteLine(canMove);
 
-        if (canMove)
+        if (CanMove)
         {
             Input.SetCursorState(MouseMode.Disabled);
         }

@@ -37,8 +37,6 @@ internal static class VoxelEditor
         Log.Info("Loading ImGui Config");
         LoadStyle();
         Log.Info("Loading ImGui Style");
-        // LoadFont();
-        // Log.Info("Loading ImGui Font");
 
         ImGuiInitialized = true;
         
@@ -64,8 +62,8 @@ internal static class VoxelEditor
         ImGui.GetStyle().TabBorderSize = 1;
 
         ImGui.GetStyle().WindowTitleAlign = new Vector2(0.5f);
-        // ImGui.GetStyle().SeparatorTextAlign = new Vector2(0.5f);
-        // ImGui.GetStyle().SeparatorTextPadding = new Vector2(20, 5);
+        ImGui.GetStyle().SeparatorTextAlign = new Vector2(0.5f);
+        ImGui.GetStyle().SeparatorTextPadding = new Vector2(20, 5);
         
     }
     private static void LoadStyle()
@@ -100,16 +98,7 @@ internal static class VoxelEditor
         colors[(int)ImGuiCol.TitleBgActive] = new Vector4( 0.15f, 0.1505f, 0.151f, 1.0f );
         colors[(int)ImGuiCol.TitleBgCollapsed] = new Vector4( 0.15f, 0.1505f, 0.151f, 1.0f );
     }
-    private static void LoadFont()
-    {
-        var fonts = ImGui.GetIO().Fonts;
 
-        
-        // fonts.AddFontFromFileTTF("Resources/Fonts/Inter/static/Inter-Regular.ttf", 
-            // 15,  null, fonts.GetGlyphRangesCyrillic());
-
-        fonts.AddFontFromFileTTF("Resources/Fonts/Inter/static/Inter-Regular.ttf", 15);
-    }
 
     internal static void Update(double delta)
     {

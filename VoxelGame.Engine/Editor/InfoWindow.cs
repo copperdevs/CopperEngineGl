@@ -94,13 +94,25 @@ internal static class InfoWindow
     private static void CameraTab()
     {
         var camera = VoxelRenderer.Camera;
+        ImGui.SeparatorText("Info");
+        ImGui.BeginDisabled();
         ImGui.DragFloat3("Position", ref camera.Position);
         ImGui.DragFloat3("Front", ref camera.Front);
         ImGui.DragFloat3("Up", ref camera.Up);
         ImGui.DragFloat3("Direction", ref camera.Direction);
         ImGui.DragFloat("Yaw", ref camera.Yaw, 1);
         ImGui.DragFloat("Pitch", ref camera.Pitch, 1, -89, 89);
+        var moveFast = CameraController.MoveFast;
+        ImGui.Checkbox("Move Fast", ref moveFast);
+        var targetSpeed = CameraController.TargetMoveSpeed;
+        ImGui.DragFloat("Target Speed", ref targetSpeed);
+        var canMove = CameraController.CanMove;
+        ImGui.Checkbox("Can Move", ref canMove);
+        ImGui.EndDisabled();
+        ImGui.SeparatorText("Settings");
         ImGui.DragFloat("Zoom", ref camera.Zoom, 1, 1, 45);
+        ImGui.DragFloat("Normal Move Speed", ref CameraController.NormalMoveSpeed, 0.25f, 0, 50);
+        ImGui.DragFloat("Fast Move Speed", ref CameraController.FastMoveSpeed, 0.25f, 0, 50);
     }
 
     private static void SceneTab()
