@@ -7,9 +7,9 @@ using VoxelGame.Engine.Utils;
 
 namespace VoxelGame.Engine.Editor;
 
-public static class Gizmo
+internal static class Gizmo
 {
-    public static void EditTransform(ref GameObject gameObject)
+    internal static void EditTransform(ref GameObject gameObject)
     {
         // var transform = gameObject.Transform;
         //

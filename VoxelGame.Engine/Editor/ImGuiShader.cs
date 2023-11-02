@@ -7,24 +7,24 @@ using Silk.NET.OpenGL;
 
 namespace VoxelGame.Engine.Editor;
 
-public struct UniformFieldInfo
+internal struct UniformFieldInfo
 {
-    public int Location;
-    public string Name;
-    public int Size;
-    public UniformType Type;
+    internal int Location;
+    internal string Name;
+    internal int Size;
+    internal UniformType Type;
 }
 
-public class ImGuiShader
+internal class ImGuiShader
 {
-    public uint Program { get; private set; }
+    internal uint Program { get; private set; }
     private readonly Dictionary<string, int> _uniformToLocation = new Dictionary<string, int>();
     private readonly Dictionary<string, int> _attribLocation = new Dictionary<string, int>();
     private bool _initialized = false;
     private GL _gl;
     private (ShaderType Type, string Path)[] _files;
 
-    public ImGuiShader(GL gl, string vertexShader, string fragmentShader)
+    internal ImGuiShader(GL gl, string vertexShader, string fragmentShader)
     {
         _gl = gl;
         _files = new[]
@@ -35,12 +35,12 @@ public class ImGuiShader
         Program = CreateProgram(_files);
     }
 
-    public void UseShader()
+    internal void UseShader()
     {
         _gl.UseProgram(Program);
     }
 
-    public void Dispose()
+    internal void Dispose()
     {
         if (_initialized)
         {
@@ -49,7 +49,7 @@ public class ImGuiShader
         }
     }
 
-    public UniformFieldInfo[] GetUniforms()
+    internal UniformFieldInfo[] GetUniforms()
     {
         _gl.GetProgram(Program, GLEnum.ActiveUniforms, out var uniformCount);
 
@@ -72,7 +72,7 @@ public class ImGuiShader
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public int GetUniformLocation(string uniform)
+    internal int GetUniformLocation(string uniform)
     {
         if (_uniformToLocation.TryGetValue(uniform, out int location) == false)
         {
@@ -89,7 +89,7 @@ public class ImGuiShader
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public int GetAttribLocation(string attrib)
+    internal int GetAttribLocation(string attrib)
     {
         if (_attribLocation.TryGetValue(attrib, out int location) == false)
         {

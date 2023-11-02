@@ -21,7 +21,7 @@ using Shader = VoxelGame.Engine.Editor.ImGuiShader;
 
 namespace VoxelGame.Engine.Editor;
 
-public class ImGuiController : IDisposable
+internal class ImGuiController : IDisposable
 {
     private GL _gl;
     private IView _view;
@@ -45,33 +45,33 @@ public class ImGuiController : IDisposable
     private int _windowWidth;
     private int _windowHeight;
 
-    public IntPtr ImGuiContext;
+    internal IntPtr ImGuiContext;
 
     /// <summary>
     /// Constructs a new ImGuiController.
     /// </summary>
-    public ImGuiController(GL gl, IView view, IInputContext input) : this(gl, view, input, null, null)
+    internal ImGuiController(GL gl, IView view, IInputContext input) : this(gl, view, input, null, null)
     {
     }
 
     /// <summary>
     /// Constructs a new ImGuiController with font configuration.
     /// </summary>
-    public ImGuiController(GL gl, IView view, IInputContext input, ImGuiFontConfig imGuiFontConfig) : this(gl, view, input, imGuiFontConfig, null)
+    internal ImGuiController(GL gl, IView view, IInputContext input, ImGuiFontConfig imGuiFontConfig) : this(gl, view, input, imGuiFontConfig, null)
     {
     }
 
     /// <summary>
     /// Constructs a new ImGuiController with an onConfigureIO Action.
     /// </summary>
-    public ImGuiController(GL gl, IView view, IInputContext input, Action onConfigureIO) : this(gl, view, input, null, onConfigureIO)
+    internal ImGuiController(GL gl, IView view, IInputContext input, Action onConfigureIO) : this(gl, view, input, null, onConfigureIO)
     {
     }
 
     /// <summary>
     /// Constructs a new ImGuiController with font configuration and onConfigure Action.
     /// </summary>
-    public ImGuiController(GL gl, IView view, IInputContext input, ImGuiFontConfig? imGuiFontConfig = null, Action onConfigureIO = null)
+    internal ImGuiController(GL gl, IView view, IInputContext input, ImGuiFontConfig? imGuiFontConfig = null, Action onConfigureIO = null)
     {
         Init(gl, view, input);
 
@@ -95,7 +95,7 @@ public class ImGuiController : IDisposable
         BeginFrame();
     }
 
-    public void MakeCurrent()
+    internal void MakeCurrent()
     {
         ImGuiNET.ImGui.SetCurrentContext(ImGuiContext);
         ImGuizmo.SetImGuiContext(ImGuiContext);
@@ -145,7 +145,7 @@ public class ImGuiController : IDisposable
     /// or index data has increased beyond the capacity of the existing buffers.
     /// A <see cref="CommandList"/> is needed to submit drawing and resource update commands.
     /// </summary>
-    public void Render()
+    internal void Render()
     {
         if (_frameBegun)
         {
@@ -172,7 +172,7 @@ public class ImGuiController : IDisposable
     /// <summary>
     /// Updates ImGui input and IO configuration state.
     /// </summary>
-    public void Update(float deltaSeconds)
+    internal void Update(float deltaSeconds)
     {
         var oldCtx = ImGuiNET.ImGui.GetCurrentContext();
 
