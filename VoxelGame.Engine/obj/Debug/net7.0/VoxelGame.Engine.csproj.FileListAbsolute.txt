@@ -32,3 +32,4 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engin
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Shaders\lighting.frag
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Models\bounding_box.mtl
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Models\bounding_box.obj
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Images\Colors\green.png

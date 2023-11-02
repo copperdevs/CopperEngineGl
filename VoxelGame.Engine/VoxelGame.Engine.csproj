@@ -113,6 +113,12 @@
       <EmbeddedResource Include="Resources\Models\bounding_box.mtl">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
+      <None Remove="Resources\Images\Colors\green.png" />
+      <EmbeddedResource Include="Resources\Images\Colors\green.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+
+
 
 
 

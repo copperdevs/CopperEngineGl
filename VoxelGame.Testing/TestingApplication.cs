@@ -1,4 +1,5 @@
 ﻿using VoxelGame.Engine;
+using VoxelGame.Engine.Collider;
 using VoxelGame.Engine.Components;
 using VoxelGame.Engine.Logs;
 using VoxelGame.Engine.Rendering;
@@ -20,8 +21,8 @@ public class TestingApplication : VoxelApplication
         testCube.AddComponent<ReflectionTesting>();
         scene.AddGameObject(testCube);
 
-        var testGizmo = new GameObject();
-        testGizmo.AddComponent(new CopperModel("Resources/Images/silk.png", "Resources/Models/bounding_box.obj"));
-        scene.AddGameObject(testGizmo);
+        var colliderTest = new GameObject();
+        colliderTest.AddComponent<CubeCollider>();
+        scene.AddGameObject(colliderTest);
     }
 }
