@@ -14,10 +14,10 @@ using Silk.NET.Input;
 using Silk.NET.Maths;
 using Silk.NET.OpenGL;
 using Silk.NET.Windowing;
-using Texture = CopperEngine.Editor.ImGuiTexture;
-using Shader = CopperEngine.Editor.ImGuiShader;
+using Texture = CopperEngine.Editor.Dear_ImGui.ImGuiTexture;
+using Shader = CopperEngine.Editor.Dear_ImGui.ImGuiShader;
 
-namespace CopperEngine.Editor;
+namespace CopperEngine.Editor.Dear_ImGui;
 
 internal class ImGuiController : IDisposable
 {

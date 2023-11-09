@@ -98,7 +98,7 @@ internal static class ObjectBrowserTab
 
     private static void ObjectInspectorComponent(GameComponent component)
     {
-        ImGui.Text(component.GetType().Name);
+        // ImGui.Text(component.GetType().Name);
         var fieldInfos = component.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public);
         // fieldInfos[0].GetType();
         foreach (var fieldInfo in fieldInfos)

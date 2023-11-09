@@ -2,6 +2,7 @@
 using System.Xml;
 using CopperEngine.Components;
 using CopperEngine.Info;
+using CopperEngine.Logs;
 using CopperEngine.Scenes;
 using Silk.NET.Input;
 
@@ -105,20 +106,27 @@ public static class Engine
 
         EngineWindow.Window.Update += delta =>
         {
-            Input.CheckInput();
+            try
+            {
+                Input.CheckInput();
 
-            #if DEBUG
-            EngineWindow.SetTitle($"CopperEngine | Delta Time - {delta} | Size - <{EngineWindow.Window.Size.X},{EngineWindow.Window.Size.Y}>");
-            #endif
+                #if DEBUG
+                EngineWindow.SetTitle($"CopperEngine | Delta Time - {delta} | Size - <{EngineWindow.Window.Size.X},{EngineWindow.Window.Size.Y}>");
+                #endif
             
-            SceneManager.GameObjectsPreUpdate(EngineAssets);
-            SceneManager.CurrentSceneGameObjectsPreUpdate();
+                SceneManager.GameObjectsPreUpdate(EngineAssets);
+                SceneManager.CurrentSceneGameObjectsPreUpdate();
             
-            SceneManager.GameObjectsUpdate(EngineAssets);
-            SceneManager.CurrentSceneGameObjectsUpdate();
+                SceneManager.GameObjectsUpdate(EngineAssets);
+                SceneManager.CurrentSceneGameObjectsUpdate();
             
-            SceneManager.GameObjectsPostUpdate(EngineAssets);
-            SceneManager.CurrentSceneGameObjectsPostUpdate();
+                SceneManager.GameObjectsPostUpdate(EngineAssets);
+                SceneManager.CurrentSceneGameObjectsPostUpdate();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+            }
         };
     }
 

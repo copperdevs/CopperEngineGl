@@ -228,41 +228,7 @@ internal static class InfoWindow
             {
                 foreach (var logs in CopperLogger.Logs.ToList())
                 {
-                    if (showDisabledLogs)
-                    {
-                        ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
-                        return;
-                    }
-                    
-                    switch (logs.Item2)
-                    {
-                        case CopperLogger.LogType.DeepInfo:
-                        {
-                            if (CopperLogger.DeepInfoLogsEnabled)
-                                ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
-                            break;
-                        }
-                        case CopperLogger.LogType.Info:
-                        {
-                            if (CopperLogger.InfoLogsEnabled)
-                                ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
-                            break;
-                        }
-                        case CopperLogger.LogType.Warning:
-                        {
-                            if (CopperLogger.WarningLogsEnabled)
-                                ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
-                            break;
-                        }
-                        case CopperLogger.LogType.Error:
-                        {
-                            if (CopperLogger.ErrorLogsEnabled)
-                                ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
-                            break;
-                        }
-                        default:
-                            return;
-                    }
+                    ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
                 }
             }
             catch (Exception e)

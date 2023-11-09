@@ -4,7 +4,7 @@
 using CopperEngine.Utils;
 using Silk.NET.OpenGL;
 
-namespace CopperEngine.Editor;
+namespace CopperEngine.Editor.Dear_ImGui;
 
 internal enum TextureCoordinate
 {

@@ -16,7 +16,7 @@ public class TestingApplication : GameApplication
         scene.CreateGameObject();
 
         var testCube = scene.CreateGameObject();
-        testCube.AddComponent(new Model("Resources/Images/silk.png", "Resources/Models/cube.obj"));
+        testCube.AddComponent(new Model("Resources/Images/copper.png", "Resources/Models/cube.obj"));
         testCube.AddComponent<ReflectionTesting>();
 
 

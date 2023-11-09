@@ -11,7 +11,7 @@ namespace CopperEngine;
 
 // TODO: https://github.com/dotnet/Silk.NET/tree/main/examples/CSharp/OpenGL%20Tutorials
 // Lighting
-internal static class EngineRenderer
+public static class EngineRenderer
 {
     private static bool initialized;
     private static GL Gl => EngineWindow.Gl!;
@@ -20,9 +20,9 @@ internal static class EngineRenderer
     internal static Action LoadPreModels;
     
     
-    internal static Camera Camera = new();
+    public static Camera Camera { get; internal set; } = new();
 
-    public static void Initialize()
+    internal static void Initialize()
     {
         if (initialized)
             return;

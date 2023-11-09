@@ -3,7 +3,7 @@
 
 using ImGuiNET;
 
-namespace CopperEngine.Editor;
+namespace CopperEngine.Editor.Dear_ImGui;
 
 internal readonly struct ImGuiFontConfig
 {

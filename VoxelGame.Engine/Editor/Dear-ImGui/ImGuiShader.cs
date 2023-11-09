@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Silk.NET.OpenGL;
 
-namespace CopperEngine.Editor;
+namespace CopperEngine.Editor.Dear_ImGui;
 
 internal struct UniformFieldInfo
 {

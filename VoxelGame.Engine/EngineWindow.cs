@@ -1,4 +1,5 @@
-﻿using CopperEngine.Info;
+﻿using System.Numerics;
+using CopperEngine.Info;
 using CopperEngine.Logs;
 using Silk.NET.Input;
 using Silk.NET.Maths;
@@ -10,7 +11,7 @@ using SilkInput = Silk.NET.Input.IInputContext;
 
 namespace CopperEngine;
 
-internal static class EngineWindow
+public static class EngineWindow
 {
     private static bool initialized;
     internal static bool WindowLoaded { get; private set; }
@@ -18,12 +19,16 @@ internal static class EngineWindow
     internal static SilkWindow? Window;
     internal static SilkGl? Gl;
     internal static SilkInput? InputContext;
-    
+
+    public static Vector2 WindowSize => Window is null ? Vector2.Zero : new Vector2(Window.Size.X, Window.Size.Y);
+
     internal static void Initialize(Action loadAction)
     {
         if (initialized)
             return;
         initialized = true;
+        
+        
         
         var options = WindowOptions.Default;
         options.Size = new Vector2D<int>(650, 400);
@@ -93,7 +98,10 @@ internal static class EngineWindow
 
     public static void SetTitle(string title)
     {
+        if (Window is null) 
+            return;
+        
         Log.DeepInfo($"Updating the window title = '{title}'");
-        Window!.Title = title;
+        Window.Title = title;
     }
 }

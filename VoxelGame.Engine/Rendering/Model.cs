@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using CopperEngine.Components;
 using CopperEngine.Rendering.Internal;
+using ImGuiNET;
 using Silk.NET.OpenGL;
 using InternalShader = CopperEngine.Rendering.Internal.Shader;
 using InternalTexture = CopperEngine.Rendering.Internal.Texture;
@@ -20,6 +21,9 @@ public class Model : GameComponent
     internal InternalModel? LoadedModel { get; private set; }
     private readonly InternalTexture? texture;
     private static readonly GL Gl = EngineWindow.Gl!;
+
+    private string TexturePath;
+    private string ModelPath;
     
     /// <summary>
     /// Loads a new model
@@ -28,6 +32,9 @@ public class Model : GameComponent
     /// <param name="modelPath">Path of the .obj model</param>
     public Model(string texturePath, string modelPath)
     {
+        TexturePath = texturePath;
+        ModelPath = modelPath;
+        
         if (ModelLibrary.TryGetValue(modelPath, out var modelValue))
             LoadedModel = modelValue;
         else
@@ -65,6 +72,17 @@ public class Model : GameComponent
         }
     }
 
+    public override void RenderEditor()
+    {
+        ImGui.LabelText("Model Name", Path.GetFileName(ModelPath));
+        ImGui.LabelText("Model Path", ModelPath);
+        
+        ImGui.Text("");
+        
+        ImGui.LabelText("Texture Name", Path.GetFileName(TexturePath));
+        ImGui.LabelText("Texture Path", TexturePath);
+    }
+
     public override void Stop()
     {
         Dispose();
@@ -72,7 +90,7 @@ public class Model : GameComponent
 
     private void Dispose()
     {
-        LoadedModel.Dispose();
-        texture.Dispose();
+        LoadedModel?.Dispose();
+        texture?.Dispose();
     }
 }
