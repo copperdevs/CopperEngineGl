@@ -200,8 +200,11 @@ internal static class InfoWindow
         }
     }
 
+    private static bool showDisabledLogs;
+    
     private static void LogsTab()
     {
+        ImGui.Checkbox("Show Disabled Logs", ref showDisabledLogs);
         ImGui.Checkbox("Deep Info Logs Enabled", ref CopperLogger.DeepInfoLogsEnabled);
         ImGui.Checkbox("Info Logs Enabled", ref CopperLogger.InfoLogsEnabled);
         ImGui.Checkbox("Warning Logs Enabled", ref CopperLogger.WarningLogsEnabled);
@@ -210,11 +213,51 @@ internal static class InfoWindow
         if (ImGui.CollapsingHeader("Logs"))
         {
             ImGui.Indent();
-
-            foreach (var logs in CopperLogger.Logs)
+            
+            try
             {
-                // ImGui.Text(logs.Item1);
-                ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
+                foreach (var logs in CopperLogger.Logs.ToList())
+                {
+                    if (showDisabledLogs)
+                    {
+                        ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
+                        return;
+                    }
+                    
+                    switch (logs.Item2)
+                    {
+                        case CopperLogger.LogType.DeepInfo:
+                        {
+                            if (CopperLogger.DeepInfoLogsEnabled)
+                                ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
+                            break;
+                        }
+                        case CopperLogger.LogType.Info:
+                        {
+                            if (CopperLogger.InfoLogsEnabled)
+                                ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
+                            break;
+                        }
+                        case CopperLogger.LogType.Warning:
+                        {
+                            if (CopperLogger.WarningLogsEnabled)
+                                ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
+                            break;
+                        }
+                        case CopperLogger.LogType.Error:
+                        {
+                            if (CopperLogger.ErrorLogsEnabled)
+                                ImGui.TextColored(logs.Item2.ToImGuiColor(), logs.Item1);
+                            break;
+                        }
+                        default:
+                            return;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
             }
             
             ImGui.Unindent();

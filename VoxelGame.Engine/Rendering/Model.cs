@@ -6,7 +6,7 @@ using AssimpMesh = Silk.NET.Assimp.Mesh;
 
 namespace VoxelGame.Engine.Rendering;
 
-public class Model : IDisposable
+internal class Model : IDisposable
 {
     internal Guid Id;
     

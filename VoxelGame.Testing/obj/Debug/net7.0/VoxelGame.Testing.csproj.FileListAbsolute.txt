@@ -86,3 +86,4 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testi
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Resources\Models\bounding_box.mtl
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Resources\Models\bounding_box.obj
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Resources\Images\Colors\green.png
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Jitter2.dll

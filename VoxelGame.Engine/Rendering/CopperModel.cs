@@ -14,9 +14,9 @@ public class CopperModel : GameComponent
     private static readonly Dictionary<string, Model> ModelLibrary = new();
     private static readonly Dictionary<string, Texture> TextureLibrary = new();
     
-    public Matrix4x4 TransformViewMatrix => Transform?.ViewMatrix ?? Matrix4x4.Identity;
+    public Matrix4x4 TransformViewMatrix => Transform?.Matrix ?? Matrix4x4.Identity;
     private readonly Shader? shader = VoxelRenderer.Shader;
-    public Model? Model { get; private set; }
+    internal Model? Model { get; private set; }
     private Texture? texture;
     private static readonly GL Gl = VoxelWindow.Gl!;
     

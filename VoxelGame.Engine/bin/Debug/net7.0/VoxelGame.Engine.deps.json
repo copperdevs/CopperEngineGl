@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "VoxelGame.Engine/1.0.0": {
         "dependencies": {
+          "Jitter2": "2.0.1",
           "Silk.NET": "2.18.0",
           "Silk.NET.Assimp": "2.18.0",
           "SixLabors.ImageSharp": "3.0.2",
@@ -17,6 +18,14 @@
         },
         "runtime": {
           "VoxelGame.Engine.dll": {}
+        }
+      },
+      "Jitter2/2.0.1": {
+        "runtime": {
+          "lib/net7.0/Jitter2.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.1.0"
+          }
         }
       },
       "Microsoft.CSharp/4.7.0": {},
@@ -452,6 +461,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Jitter2/2.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EySYsxh0wjz4PTh/2hJBNW/gC+THBbnMNuJ/VF+NKO0X1KsVkxiHTwgA7dHfF57LLI3A6t49tdKAJ5riOaskNg==",
+      "path": "jitter2/2.0.1",
+      "hashPath": "jitter2.2.0.1.nupkg.sha512"
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",

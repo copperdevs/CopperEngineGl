@@ -3,7 +3,7 @@ using Silk.NET.OpenGL;
 
 namespace VoxelGame.Engine.Rendering;
 
-public class Texture : IDisposable
+internal class Texture : IDisposable
 {
     internal Guid Id;
     

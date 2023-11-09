@@ -117,8 +117,16 @@ internal static class VoxelEditor
         RenderEditor?.Invoke();
         
         ImGuiController?.Render();
-        SceneManager.CurrentSceneGameObjectsRenderEditor();
-        SceneManager.GameObjectsRenderEditor(VoxelEngine.EngineAssets);
+        
+
+        try
+        {
+            SceneManager.Scenes[VoxelEngine.EngineAssets].GameObjects.ForEach(g => g.Components.ForEach(c => c.RenderEditor()));
+        }
+        catch (Exception e)
+        {
+            Log.Error(e);
+        }
     }
 
     private static void RenderMenuBar()

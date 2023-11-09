@@ -115,6 +115,7 @@ internal static class ObjectBrowserTab
             }
             // ImGui.Text($"{fieldInfo.FieldType.FullName}");
         }
+        component.RenderEditor();
     }
 
     private static readonly Dictionary<Type, Action<FieldInfo, GameComponent>> ImGuiRenderers = new()

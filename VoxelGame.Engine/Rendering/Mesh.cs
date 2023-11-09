@@ -3,7 +3,7 @@ using VoxelGame.Engine.Data;
 
 namespace VoxelGame.Engine.Rendering;
 
-public class Mesh : IDisposable
+internal class Mesh : IDisposable
 {
     public Mesh(GL gl, float[] vertices, uint[] indices, List<Texture> textures)
     {

@@ -1,4 +1,5 @@
-﻿using VoxelGame.Engine.Components;
+﻿using Jitter2;
+using VoxelGame.Engine.Components;
 
 namespace VoxelGame.Engine.Scenes;
 
@@ -7,6 +8,7 @@ public class Scene
     public string Name { get; internal set; }
     public Guid SceneId { get; internal set; }
     public List<GameObject> GameObjects { get; internal set; }
+    internal World PhysicsWorld;
 
     public static Scene CreateScene(string name, out Guid sceneId)
     {
@@ -31,6 +33,7 @@ public class Scene
     {
         Name = name;
         GameObjects = new List<GameObject>();
+        PhysicsWorld = new World();
     }
 
     public void AddComponent<T>() where T : GameComponent, new()

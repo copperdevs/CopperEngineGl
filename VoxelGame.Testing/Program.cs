@@ -7,7 +7,7 @@ public static class Program
 {
     public static void Main()
     {
-        VoxelEngine.Initialize<TestingApplication>();
+        VoxelEngine.Initialize<PhysicsTestingApplication>();
         VoxelEngine.Run();
     }
 }

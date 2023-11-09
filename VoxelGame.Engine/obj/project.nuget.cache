@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Il+EruCy0IZysRxgtIxkD61sLGS8ZfypDarj1DX7S1HwtnjaXUF7dLogL18cEi8Ep8Lmv0LuB0YiGOdxitD82w==",
+  "dgSpecHash": "YXfjWtDq4uvO9Vvmq6BHIakoBF3krv4n3lOddS27OponckSmRXEzppUMq0Y+giZPFb0M8+41dt06w2PYRn23EA==",
   "success": true,
   "projectFilePath": "C:\\Users\\715263\\Desktop\\School-Work\\Dev\\Projects\\Rider\\VoxelGame\\VoxelGame.Engine\\VoxelGame.Engine.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\715263\\.nuget\\packages\\jitter2\\2.0.1\\jitter2.2.0.1.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\microsoft.extensions.dependencymodel\\7.0.0\\microsoft.extensions.dependencymodel.7.0.0.nupkg.sha512",
