@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using CopperEngine.Utils;
 
 namespace CopperEngine.Components;
 
@@ -12,6 +13,9 @@ internal class Camera
     internal float Pitch = 0f;
     internal float Zoom = 45f;
     
-    internal Matrix4x4 ViewMatrix;
-    internal Matrix4x4 ProjectionMatrix;
+    internal Matrix4x4 ViewMatrix => Matrix4x4.CreateLookAt(Position, Position + Front, Up);
+    internal Matrix4x4 ProjectionMatrix => Matrix4x4.CreatePerspectiveFieldOfView(
+        MathUtil.DegreesToRadians(Zoom), 
+        (float)EngineWindow.Window!.Size.X / (float)EngineWindow.Window.Size.Y, 
+        0.1f, 100.0f);
 }

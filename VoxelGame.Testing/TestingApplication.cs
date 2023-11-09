@@ -16,7 +16,7 @@ public class TestingApplication : GameApplication
         scene.CreateGameObject();
 
         var testCube = scene.CreateGameObject();
-        testCube.AddComponent(new CopperModel("Resources/Images/silk.png", "Resources/Models/cube.obj"));
+        testCube.AddComponent(new Model("Resources/Images/silk.png", "Resources/Models/cube.obj"));
         testCube.AddComponent<ReflectionTesting>();
 
 
@@ -38,7 +38,7 @@ public class TestingApplication : GameApplication
                         continue;
                     
                     var cube = chunkScene.CreateGameObject();
-                    cube.AddComponent(new CopperModel("Resources/Images/silk.png", "Resources/Models/cube.obj"));
+                    cube.AddComponent(new Model("Resources/Images/silk.png", "Resources/Models/cube.obj"));
                     cube.Transform.Position = new Vector3(x * 2, y * 2, z * 2);
                 }
             }

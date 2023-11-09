@@ -92,22 +92,34 @@ internal static class InfoWindow
     private static void CameraTab()
     {
         var camera = EngineRenderer.Camera;
+            
         ImGui.SeparatorText("Info");
+        
         ImGui.BeginDisabled();
+        
         ImGui.DragFloat3("Position", ref camera.Position);
         ImGui.DragFloat3("Front", ref camera.Front);
         ImGui.DragFloat3("Up", ref camera.Up);
         ImGui.DragFloat3("Direction", ref camera.Direction);
         ImGui.DragFloat("Yaw", ref camera.Yaw, 1);
         ImGui.DragFloat("Pitch", ref camera.Pitch, 1, -89, 89);
+        
         var moveFast = CameraController.MoveFast;
         ImGui.Checkbox("Move Fast", ref moveFast);
+        
         var targetSpeed = CameraController.TargetMoveSpeed;
         ImGui.DragFloat("Target Speed", ref targetSpeed);
+        
         var canMove = CameraController.CanMove;
         ImGui.Checkbox("Can Move", ref canMove);
+
         ImGui.EndDisabled();
+        
+        EditorUtil.DragMatrix4X4("Camera Projection Matrix", EngineRenderer.Camera.ProjectionMatrix, false);
+        EditorUtil.DragMatrix4X4("Camera View Matrix", EngineRenderer.Camera.ViewMatrix, false);
+        
         ImGui.SeparatorText("Settings");
+        
         ImGui.DragFloat("Zoom", ref camera.Zoom, 1, 1, 45);
         ImGui.DragFloat("Normal Move Speed", ref CameraController.NormalMoveSpeed, 0.25f, 0, 50);
         ImGui.DragFloat("Fast Move Speed", ref CameraController.FastMoveSpeed, 0.25f, 0, 50);
@@ -134,8 +146,8 @@ internal static class InfoWindow
 
     private static void RenderingTab()
     {
-        var models = new List<CopperModel>();
-        SceneManager.CurrentScene().GameObjects.ForEach(gm => gm.Components.ForEach(c => { if (c.GetType() == typeof(CopperModel)) models.Add((CopperModel)c); }));
+        var models = new List<Model>();
+        SceneManager.CurrentScene().GameObjects.ForEach(gm => gm.Components.ForEach(c => { if (c.GetType() == typeof(Model)) models.Add((Model)c); }));
         // var models = VoxelRenderer.Models.Distinct().ToList();
         
         ImGui.LabelText("Model Count", $"{models.Count}");
@@ -151,9 +163,9 @@ internal static class InfoWindow
 
                 if (ImGui.CollapsingHeader($"Meshes##{index1}"))
                 {
-                    for (var i = 0; i < model.Model.Meshes.Count; i++)
+                    for (var i = 0; i < model.LoadedModel.Meshes.Count; i++)
                     {
-                        var mesh = model.Model.Meshes[i];
+                        var mesh = model.LoadedModel.Meshes[i];
 
                         ImGui.Indent();
                         if (ImGui.CollapsingHeader($"Mesh #{i}##{index1}"))

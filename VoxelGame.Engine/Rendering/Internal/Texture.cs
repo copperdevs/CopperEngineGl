@@ -1,7 +1,7 @@
 ﻿using Silk.NET.Assimp;
 using Silk.NET.OpenGL;
 
-namespace CopperEngine.Rendering;
+namespace CopperEngine.Rendering.Internal;
 
 internal class Texture : IDisposable
 {

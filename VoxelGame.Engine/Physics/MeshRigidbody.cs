@@ -5,7 +5,7 @@ using Jitter2.Dynamics;
 
 namespace CopperEngine.Physics;
 
-[UniqueComponent, RequireComponent(typeof(CopperModel))]
+[UniqueComponent, RequireComponent(typeof(Model))]
 public class MeshRigidbody : GameComponent, IRigidbody
 {
     public RigidBody JitterRigidbody { get; set; }

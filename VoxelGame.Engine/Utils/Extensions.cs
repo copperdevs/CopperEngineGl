@@ -6,12 +6,12 @@ namespace CopperEngine.Utils;
 
 public static class Extensions
 {
-    public static Vector4 ToVector(this Quaternion quaternion) =>
-        new(quaternion.X, quaternion.Y, quaternion.Z, quaternion.W);
+    public static Vector4 ToVector(this Quaternion quaternion) => new(quaternion.X, quaternion.Y, quaternion.Z, quaternion.W);
     public static Quaternion ToQuaternion(this Vector4 vector) => new(vector.X, vector.Y, vector.Z, vector.W);
     
     public static Quaternion FromEulerAngles(this Vector3 euler) => MathUtil.FromEulerAngles(euler);
     public static Vector3 ToEulerAngles(this Quaternion quaternion) => MathUtil.ToEulerAngles(quaternion);
+    
     public static Matrix4x4 GetTransformMatrix(this RigidBody rigidBody) => PhysicsUtil.GetTransformMatrix(rigidBody);
     
     public static Vector3 AreaInSphere(this Random random)

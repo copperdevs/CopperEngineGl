@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using Silk.NET.OpenGL;
 
-namespace CopperEngine.Rendering;
+namespace CopperEngine.Rendering.Internal;
 
 internal class Shader : IDisposable
 {

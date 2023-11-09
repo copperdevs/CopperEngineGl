@@ -2,7 +2,7 @@
 
 namespace CopperEngine.Data;
 
-public class BufferObject<TDataType> : IDisposable
+internal class BufferObject<TDataType> : IDisposable
     where TDataType : unmanaged
 {
     private uint _handle;

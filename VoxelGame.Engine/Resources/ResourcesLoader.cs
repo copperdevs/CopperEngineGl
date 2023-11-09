@@ -3,7 +3,7 @@ using System.Text;
 
 namespace CopperEngine.Resources;
 
-public static class ResourcesLoader
+internal static class ResourcesLoader
 {
     private static readonly Assembly? Assembly = Assembly.GetAssembly(typeof(ResourcesLoader));
     private static readonly string[] Resources = Assembly?.GetManifestResourceNames()!;

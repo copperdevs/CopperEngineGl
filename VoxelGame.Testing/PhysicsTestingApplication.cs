@@ -12,7 +12,7 @@ public class PhysicsTestingApplication : GameApplication
         var cubeScene = Scene.CreateScene("Cube Scene");
 
         var cube = cubeScene.CreateGameObject();
-        cube.AddComponent(new CopperModel("Resources/Images/silk.png", "Resources/Models/cube.obj"));
+        cube.AddComponent(new Model("Resources/Images/silk.png", "Resources/Models/cube.obj"));
         cube.AddComponent(new Rigidbody(new BoxShape(2)));
     }
 }

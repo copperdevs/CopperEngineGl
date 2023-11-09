@@ -2,6 +2,11 @@
 
 public static class FileUtil
 {
+    /// <summary>
+    /// Creates a new temporary file in the local directory
+    /// </summary>
+    /// <param name="name">Name of the file</param>
+    /// <returns>Path of the file</returns>
     public static string CreateTempFile(string name)
     {
         try

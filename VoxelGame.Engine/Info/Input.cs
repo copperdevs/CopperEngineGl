@@ -57,13 +57,30 @@ public static class Input
             keyboard.KeyDown += Input.KeyInput;
         }
     }
-
+    
+    /// <summary>
+    /// Type of key press to listen to
+    /// </summary>
     public enum RegisterType
     {
+        /// <summary>
+        /// Runs the first frame the key is pressed
+        /// </summary>
         Pressed,
+        
+        /// <summary>
+        /// Runs every frame the key is pressed
+        /// </summary>
         Down
     }
 
+    /// <summary>
+    /// Registers a new event to run when a key is pressed
+    /// </summary>
+    /// <param name="key">Target key to listen to</param>
+    /// <param name="action">Action to run when the key is pressed</param>
+    /// <param name="registerType">Type of key press to listen to</param>
+    /// <exception cref="ArgumentOutOfRangeException">If register type is silly</exception>
     public static void RegisterInput(Key key, Action action, RegisterType registerType)
     {
         switch (registerType)
@@ -79,6 +96,10 @@ public static class Input
         }
     }
 
+    /// <summary>
+    /// Registers a new event to run when the mouse scroll wheel is used
+    /// </summary>
+    /// <param name="action">Target event to run</param>
     public static void RegisterInput(Action<int> action)
     {
         MouseScrollInputActions.Add(action);
@@ -114,6 +135,10 @@ public static class Input
         }
     }
 
+    /// <summary>
+    /// Sets the current active mouse mode
+    /// </summary>
+    /// <param name="mouseMode">Mouse mode to activate</param>
     public static void SetCursorState(MouseMode mouseMode)
     {
         foreach (var mouse in EngineWindow.InputContext!.Mice)

@@ -6,7 +6,8 @@ public static class Program
 {
     public static void Main()
     {
-        Engine.Initialize<PhysicsTestingApplication>();
+        // Engine.Initialize<TestingApplication>();
+        Engine.Initialize();
         Engine.Run();
     }
 }

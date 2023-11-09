@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace CopperEngine.Data;
 
-public struct Vertex
+internal struct Vertex
 {
     public Vector3 Position;
     public Vector3 Normal;

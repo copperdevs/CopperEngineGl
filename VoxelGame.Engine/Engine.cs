@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Xml;
 using CopperEngine.Components;
 using CopperEngine.Info;
 using CopperEngine.Scenes;
@@ -12,12 +13,18 @@ public static class Engine
     internal static readonly Scene EngineAssets = Scene.CreateScene("Engine Assets");
     private static GameApplication? application;
 
+    /// <summary>
+    /// Initializes the base engine with nothing loaded 
+    /// </summary>
     public static void Initialize()
     {
         Initialize(() => {});
     }
 
-
+    /// <summary>
+    /// Initializes the engine with a custom game application
+    /// </summary>
+    /// <typeparam name="T"> Target <see cref="GameApplication">GameApplication</see> to initialize</typeparam>
     public static void Initialize<T>() where T : GameApplication, new()
     {
         application = new T();
@@ -38,6 +45,10 @@ public static class Engine
         }));
     }
     
+    /// <summary>
+    /// Initializes the engine and runs a load event
+    /// </summary>
+    /// <param name="loadEvent">Load event when the window loads</param>
     public static void Initialize(Action loadEvent)
     {
         if (initialized)
@@ -111,6 +122,9 @@ public static class Engine
         };
     }
 
+    /// <summary>
+    /// Runs the window
+    /// </summary>
     public static void Run()
     {
         EngineWindow.Run();

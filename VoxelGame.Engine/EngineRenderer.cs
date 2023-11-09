@@ -5,7 +5,7 @@ using CopperEngine.Scenes;
 using CopperEngine.Utils;
 using Silk.NET.OpenGL;
 using Color = System.Drawing.Color;
-using Shader = CopperEngine.Rendering.Shader;
+using Shader = CopperEngine.Rendering.Internal.Shader;
 
 namespace CopperEngine;
 
@@ -41,10 +41,6 @@ internal static class EngineRenderer
         
         Shader.Use();
         Shader.SetUniform("uTexture0", 0);
-        
-        var camera = Camera;
-        Camera.ViewMatrix = Matrix4x4.CreateLookAt(camera.Position, camera.Position + camera.Front, camera.Up);
-        Camera.ProjectionMatrix = Matrix4x4.CreatePerspectiveFieldOfView(MathUtil.DegreesToRadians(camera.Zoom), (float)EngineWindow.Window!.Size.X / (float)EngineWindow.Window.Size.Y, 0.1f, 100.0f);
         
         SceneManager.CurrentSceneGameObjectsRender();
         SceneManager.GameObjectsRender(CopperEngine.Engine.EngineAssets);

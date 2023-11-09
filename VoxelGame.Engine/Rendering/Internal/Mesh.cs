@@ -1,8 +1,7 @@
 ﻿using CopperEngine.Data;
 using Silk.NET.OpenGL;
-using Texture = CopperEngine.Rendering.Texture;
 
-namespace CopperEngine.Rendering;
+namespace CopperEngine.Rendering.Internal;
 
 internal class Mesh : IDisposable
 {

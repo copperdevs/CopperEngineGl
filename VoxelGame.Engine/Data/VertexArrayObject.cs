@@ -2,7 +2,7 @@
 
 namespace CopperEngine.Data;
 
-public class VertexArrayObject<TVertexType, TIndexType> : IDisposable
+internal class VertexArrayObject<TVertexType, TIndexType> : IDisposable
     where TVertexType : unmanaged
     where TIndexType : unmanaged
 {

@@ -5,6 +5,8 @@ namespace CopperEngine.Utils;
 
 public static class PhysicsUtil
 {
+    
+    // BUG: Something wrong with the returned 4X4 matrix?
     public static Matrix4x4 GetTransformMatrix(RigidBody body)
     {
         var ori = body.Orientation;

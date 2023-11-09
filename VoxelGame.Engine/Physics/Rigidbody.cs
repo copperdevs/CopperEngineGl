@@ -21,7 +21,6 @@ public class Rigidbody : GameComponent, IRigidbody
     public override void Start()
     {
         JitterRigidbody = ParentScene?.PhysicsWorld.CreateRigidBody()!;
-        
     }
 
     public override void PreFixedUpdate()

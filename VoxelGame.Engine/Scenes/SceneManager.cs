@@ -66,21 +66,40 @@ public static class SceneManager
 
     #region public api
 
+    /// <summary>
+    /// Loads a target scene
+    /// </summary>
+    /// <param name="targetScene">Scene to load</param>
     public static void LoadScene(Guid targetScene)
     {
         currentScene = Scenes[targetScene];
     }
 
+    /// <summary>
+    /// Gets the current scene
+    /// </summary>
+    /// <returns>Current scene</returns>
     public static Scene CurrentScene()
     {
         return Scenes[currentScene];
     }
     
+    /// <summary>
+    /// Creates a new scene
+    /// </summary>
+    /// <param name="name">Name of the scene</param>
+    /// <param name="sceneId">Id of the scene</param>
+    /// <returns>Created Scene</returns>
     public static Scene CreateScene(string name, out Guid sceneId)
     {
         return Scene.CreateScene(name, out sceneId);
     }
-
+    
+    /// <summary>
+    /// Creates a new scene
+    /// </summary>
+    /// <param name="name">Name of the scene</param>
+    /// <returns>Created Scene</returns>
     public static Scene CreateScene(string name)
     {
         return Scene.CreateScene(name);
