@@ -1,13 +1,10 @@
-﻿using ImGuiNET;
+﻿using CopperEngine.Components;
+using CopperEngine.Utils;
+using ImGuiNET;
 using Jitter2.Collision.Shapes;
-using Jitter2.Dynamics;
-using VoxelGame.Engine.Components;
-using VoxelGame.Engine.Data;
-using VoxelGame.Engine.Logs;
-using VoxelGame.Engine.Utils;
 using JitterRigidbody = Jitter2.Dynamics.RigidBody;
 
-namespace VoxelGame.Engine.Physics;
+namespace CopperEngine.Physics;
 
 [UniqueComponent]
 public class Rigidbody : GameComponent, IRigidbody

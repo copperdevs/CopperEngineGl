@@ -1,18 +1,16 @@
 ﻿using System.Numerics;
+using CopperEngine.Editor;
+using CopperEngine.Logs;
+using CopperEngine.Scenes;
 using ImGuiNET;
-using VoxelGame.Engine.Components;
-using VoxelGame.Engine.Editor;
-using VoxelGame.Engine.Logs;
-using VoxelGame.Engine.Scenes;
 
-namespace VoxelGame.Engine;
+namespace CopperEngine;
 
-internal static class VoxelEditor
+internal static class EngineEditor
 {
     private static bool initialized;
     internal static ImGuiController? ImGuiController { get; private set; }
-    internal static bool ImGuiInitialized  { get; private set; } = false;
-    private static bool showDemoWindow = false;
+    private static bool showDemoWindow;
 
     internal static Action? RenderEditor;
     
@@ -22,13 +20,13 @@ internal static class VoxelEditor
             return;
         initialized = true;
             
-        Log.Info("Initializing Voxel Editor");
+        Log.Info("Initializing Engine Editor");
         
         ImGuiController = new ImGuiController
         (
-            VoxelWindow.Gl,
-            VoxelWindow.Window,
-            VoxelWindow.InputContext,
+            EngineWindow.Gl!,
+            EngineWindow.Window!,
+            EngineWindow.InputContext!,
             new ImGuiFontConfig("Resources/Fonts/Inter/static/Inter-Regular.ttf", 15)
         );
         Log.Info("Created ImGuiController");
@@ -38,10 +36,8 @@ internal static class VoxelEditor
         LoadStyle();
         Log.Info("Loading ImGui Style");
 
-        ImGuiInitialized = true;
-        
         InfoWindow.Initialize();
-        Log.Info("Initialized Voxel Editor");
+        Log.Info("Initialized Engine Editor");
     }
     private static void LoadConfig()
     {
@@ -121,7 +117,7 @@ internal static class VoxelEditor
 
         try
         {
-            SceneManager.Scenes[VoxelEngine.EngineAssets].GameObjects.ForEach(g => g.Components.ForEach(c => c.RenderEditor()));
+            SceneManager.Scenes[CopperEngine.Engine.EngineAssets].GameObjects.ForEach(g => g.Components.ForEach(c => c.RenderEditor()));
         }
         catch (Exception e)
         {

@@ -1,12 +1,11 @@
-﻿using Jitter2.Collision.Shapes;
-using VoxelGame.Engine;
-using VoxelGame.Engine.Physics;
-using VoxelGame.Engine.Rendering;
-using VoxelGame.Engine.Scenes;
-
+﻿using CopperEngine;
+using CopperEngine.Physics;
+using CopperEngine.Rendering;
+using CopperEngine.Scenes;
+using Jitter2.Collision.Shapes;
 namespace VoxelGame.Testing;
 
-public class PhysicsTestingApplication : VoxelApplication
+public class PhysicsTestingApplication : GameApplication
 {
     public override void Load()
     {

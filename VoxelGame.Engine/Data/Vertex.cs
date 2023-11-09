@@ -3,7 +3,7 @@
 
 using System.Numerics;
 
-namespace VoxelGame.Engine.Data;
+namespace CopperEngine.Data;
 
 public struct Vertex
 {

@@ -1,7 +1,7 @@
-﻿using Jitter2;
-using VoxelGame.Engine.Components;
+﻿using CopperEngine.Components;
+using Jitter2;
 
-namespace VoxelGame.Engine.Scenes;
+namespace CopperEngine.Scenes;
 
 public class Scene
 {

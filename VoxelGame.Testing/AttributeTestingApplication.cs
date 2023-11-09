@@ -1,9 +1,9 @@
-﻿using VoxelGame.Engine;
-using VoxelGame.Engine.Scenes;
+﻿using CopperEngine;
+using CopperEngine.Scenes;
 
 namespace VoxelGame.Testing;
 
-public class AttributeTestingApplication : VoxelApplication
+public class AttributeTestingApplication : GameApplication
 {
     public override void Load()
     {

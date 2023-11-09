@@ -1,11 +1,9 @@
 ﻿using System.Numerics;
-using VoxelGame.Engine.Data;
-using VoxelGame.Engine.Logs;
-using VoxelGame.Engine.Physics;
-using VoxelGame.Engine.Scenes;
+using CopperEngine.Components;
+using CopperEngine.Data;
+using CopperEngine.Scenes;
 
-namespace VoxelGame.Engine.Components;
-
+namespace CopperEngine.Components;
 
 public class GameObject
 {

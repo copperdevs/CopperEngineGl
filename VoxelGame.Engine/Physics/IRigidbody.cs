@@ -1,7 +1,7 @@
 ﻿using Jitter2.Collision.Shapes;
 using Jitter2.Dynamics;
 
-namespace VoxelGame.Engine.Physics;
+namespace CopperEngine.Physics;
 
 public interface IRigidbody
 {

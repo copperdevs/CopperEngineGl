@@ -2,7 +2,7 @@
 using ImGuiNET;
 using Jitter2.LinearMath;
 
-namespace VoxelGame.Engine.Utils;
+namespace CopperEngine.Utils;
 
 public static class EditorUtil
 {

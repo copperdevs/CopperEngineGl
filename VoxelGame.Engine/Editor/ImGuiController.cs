@@ -3,23 +3,21 @@
 
 #define ImGuizmo
 
+
+#if ImGuizmo
+#endif
 using System.Numerics;
+using CopperEngine.Logs;
 using ImGuiNET;
+using ImGuizmoNET;
 using Silk.NET.Input;
 using Silk.NET.Maths;
 using Silk.NET.OpenGL;
 using Silk.NET.Windowing;
-using VoxelGame.Engine.Logs;
+using Texture = CopperEngine.Editor.ImGuiTexture;
+using Shader = CopperEngine.Editor.ImGuiShader;
 
-
-#if ImGuizmo
-using ImGuizmoNET;
-#endif
-
-using Texture = VoxelGame.Engine.Editor.ImGuiTexture;
-using Shader = VoxelGame.Engine.Editor.ImGuiShader;
-
-namespace VoxelGame.Engine.Editor;
+namespace CopperEngine.Editor;
 
 internal class ImGuiController : IDisposable
 {

@@ -1,15 +1,8 @@
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\VoxelGame.Engine.deps.json
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\VoxelGame.Engine.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\VoxelGame.Engine.pdb
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\VoxelGame.Engine.csproj.AssemblyReference.cache
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\VoxelGame.Engine.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\VoxelGame.Engine.AssemblyInfoInputs.cache
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\VoxelGame.Engine.AssemblyInfo.cs
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\VoxelGame.Engine.csproj.CoreCompileInputs.cache
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\VoxelGame.Engine.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\refint\VoxelGame.Engine.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\VoxelGame.Engine.pdb
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\ref\VoxelGame.Engine.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Fonts\Inter\OFL.txt
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Fonts\Inter\README.txt
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Fonts\Inter\Static\Inter-Black.ttf
@@ -33,3 +26,11 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engin
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Models\bounding_box.mtl
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Models\bounding_box.obj
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Images\Colors\green.png
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\CopperEngine.deps.json
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\CopperEngine.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\CopperEngine.pdb
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\CopperEngine.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\refint\CopperEngine.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\CopperEngine.pdb
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\ref\CopperEngine.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\test.txt

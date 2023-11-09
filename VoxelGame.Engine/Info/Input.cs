@@ -1,10 +1,9 @@
 ﻿using System.Numerics;
-using ImGuiNET;
+using CopperEngine.Data;
+using CopperEngine.Logs;
 using Silk.NET.Input;
-using VoxelGame.Engine.Data;
-using VoxelGame.Engine.Logs;
 
-namespace VoxelGame.Engine.Info;
+namespace CopperEngine.Info;
 
 public static class Input
 {
@@ -23,7 +22,7 @@ public static class Input
     
     private static bool initialized;
 
-    internal static void Initialize(IKeyboard? primaryKeyboard)
+    internal static void Initialize()
     {
         if (initialized)
             return;
@@ -31,13 +30,13 @@ public static class Input
         
         Log.Info("Initializing Input");
 
-        Input.primaryKeyboard = primaryKeyboard;
+        primaryKeyboard = EngineWindow.InputContext?.Keyboards[0];
         
         if(primaryKeyboard is not null)
             primaryKeyboard.KeyDown += KeyInput;
 
         
-        var mice = VoxelWindow.InputContext?.Mice;
+        var mice = EngineWindow.InputContext?.Mice;
 
         if (mice is not null)
         {
@@ -53,7 +52,7 @@ public static class Input
             SetCursorState(MouseMode.Disabled);
         }
         
-        foreach (var keyboard in VoxelWindow.InputContext?.Keyboards!)
+        foreach (var keyboard in EngineWindow.InputContext?.Keyboards!)
         {
             keyboard.KeyDown += Input.KeyInput;
         }
@@ -117,7 +116,7 @@ public static class Input
 
     public static void SetCursorState(MouseMode mouseMode)
     {
-        foreach (var mouse in VoxelWindow.InputContext!.Mice)
+        foreach (var mouse in EngineWindow.InputContext!.Mice)
         {
             if((CursorMode)mouseMode == mouse.Cursor.CursorMode)
                 return;

@@ -1,15 +1,13 @@
-﻿using System.Diagnostics;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Reflection;
-using System.Runtime.CompilerServices;
+using CopperEngine.Components;
+using CopperEngine.Data;
+using CopperEngine.Logs;
+using CopperEngine.Scenes;
+using CopperEngine.Utils;
 using ImGuiNET;
-using VoxelGame.Engine.Components;
-using VoxelGame.Engine.Data;
-using VoxelGame.Engine.Logs;
-using VoxelGame.Engine.Scenes;
-using VoxelGame.Engine.Utils;
 
-namespace VoxelGame.Engine.Editor;
+namespace CopperEngine.Editor;
 
 internal static class ObjectBrowserTab
 {

@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace VoxelGame.Engine.Components;
+namespace CopperEngine.Components;
 
 internal class Camera
 {

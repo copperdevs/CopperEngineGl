@@ -1,6 +1,4 @@
-﻿using VoxelGame.Engine.Logs;
-
-namespace VoxelGame.Engine.Components;
+﻿namespace CopperEngine.Components;
 
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
 public class UniqueComponentAttribute : Attribute

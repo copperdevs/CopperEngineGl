@@ -5,6 +5,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <AssemblyName>CopperEngine</AssemblyName>
+        <RootNamespace>CopperEngine</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,7 +22,9 @@
 
     <ItemGroup>
       <None Remove="Resources\test.txt" />
-      <EmbeddedResource Include="Resources\test.txt" />
+      <EmbeddedResource Include="Resources\test.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
       <None Remove="Resources\Fonts\Inter\static\Inter-Black.ttf" />
       <EmbeddedResource Include="Resources\Fonts\Inter\Static\Inter-Black.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>

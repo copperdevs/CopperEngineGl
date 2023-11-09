@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Numerics;
 
-namespace VoxelGame.Engine.Utils;
+namespace CopperEngine.Utils;
 
 public static class MathUtil
 {

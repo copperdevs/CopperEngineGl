@@ -3,7 +3,7 @@
 
 using ImGuiNET;
 
-namespace VoxelGame.Engine.Editor;
+namespace CopperEngine.Editor;
 
 internal readonly struct ImGuiFontConfig
 {

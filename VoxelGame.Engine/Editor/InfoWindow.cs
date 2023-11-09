@@ -1,14 +1,12 @@
-﻿using System.Numerics;
+﻿using CopperEngine.Components;
+using CopperEngine.Info;
+using CopperEngine.Logs;
+using CopperEngine.Rendering;
+using CopperEngine.Scenes;
+using CopperEngine.Utils;
 using ImGuiNET;
-using ImGuizmoNET;
-using VoxelGame.Engine.Editor;
-using VoxelGame.Engine.Info;
-using VoxelGame.Engine.Logs;
-using VoxelGame.Engine.Rendering;
-using VoxelGame.Engine.Scenes;
-using VoxelGame.Engine.Utils;
 
-namespace VoxelGame.Engine.Components;
+namespace CopperEngine.Editor;
 
 internal static class InfoWindow
 {
@@ -93,7 +91,7 @@ internal static class InfoWindow
 
     private static void CameraTab()
     {
-        var camera = VoxelRenderer.Camera;
+        var camera = EngineRenderer.Camera;
         ImGui.SeparatorText("Info");
         ImGui.BeginDisabled();
         ImGui.DragFloat3("Position", ref camera.Position);

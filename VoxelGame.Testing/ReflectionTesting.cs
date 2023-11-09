@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
-using VoxelGame.Engine.Components;
-using VoxelGame.Engine.Data;
-using VoxelGame.Engine.Scenes;
+using CopperEngine.Components;
+using CopperEngine.Data;
+using CopperEngine.Scenes;
 
 namespace VoxelGame.Testing;
 

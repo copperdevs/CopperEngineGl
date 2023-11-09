@@ -1,12 +1,12 @@
 ﻿using System.Numerics;
-using VoxelGame.Engine;
-using VoxelGame.Engine.Logs;
-using VoxelGame.Engine.Rendering;
-using VoxelGame.Engine.Scenes;
+using CopperEngine;
+using CopperEngine.Logs;
+using CopperEngine.Rendering;
+using CopperEngine.Scenes;
 
 namespace VoxelGame.Testing;
 
-public class TestingApplication : VoxelApplication
+public class TestingApplication : GameApplication
 {
     public override void Load()
     {

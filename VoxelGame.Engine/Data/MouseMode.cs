@@ -1,6 +1,6 @@
 ﻿using Silk.NET.Input;
 
-namespace VoxelGame.Engine.Data;
+namespace CopperEngine.Data;
 
 public enum MouseMode
 {

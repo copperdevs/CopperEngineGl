@@ -1,11 +1,10 @@
 ﻿using System.Numerics;
+using CopperEngine.Components;
 using Silk.NET.OpenGL;
-using VoxelGame.Engine.Components;
-using VoxelGame.Engine.Data;
-using VoxelGame.Engine.Logs;
-using VoxelGame.Engine.Utils;
+using Shader = CopperEngine.Rendering.Shader;
+using Texture = CopperEngine.Rendering.Texture;
 
-namespace VoxelGame.Engine.Rendering;
+namespace CopperEngine.Rendering;
 
 public class CopperModel : GameComponent
 {
@@ -15,10 +14,10 @@ public class CopperModel : GameComponent
     private static readonly Dictionary<string, Texture> TextureLibrary = new();
     
     public Matrix4x4 TransformViewMatrix => Transform?.Matrix ?? Matrix4x4.Identity;
-    private readonly Shader? shader = VoxelRenderer.Shader;
+    private readonly Shader? shader = EngineRenderer.Shader;
     internal Model? Model { get; private set; }
     private Texture? texture;
-    private static readonly GL Gl = VoxelWindow.Gl!;
+    private static readonly GL Gl = EngineWindow.Gl!;
     
 
     public CopperModel(string texturePath, string modelPath)
@@ -53,8 +52,8 @@ public class CopperModel : GameComponent
             texture?.Bind();
             shader?.SetUniform("uTexture0", 0);
             shader?.SetUniform("uModel", TransformViewMatrix);
-            shader?.SetUniform("uView", VoxelRenderer.Camera.ViewMatrix);
-            shader?.SetUniform("uProjection", VoxelRenderer.Camera.ProjectionMatrix);
+            shader?.SetUniform("uView", EngineRenderer.Camera.ViewMatrix);
+            shader?.SetUniform("uProjection", EngineRenderer.Camera.ProjectionMatrix);
 
             Gl.DrawArrays(PrimitiveType.Triangles, 0, (uint)mesh.Vertices.Length);
         }

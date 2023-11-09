@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
+using CopperEngine.Utils;
 using Silk.NET.OpenGL;
-using VoxelGame.Engine.Utils;
 
-namespace VoxelGame.Engine.Logs;
+namespace CopperEngine.Logs;
 
 public static class Log
 {

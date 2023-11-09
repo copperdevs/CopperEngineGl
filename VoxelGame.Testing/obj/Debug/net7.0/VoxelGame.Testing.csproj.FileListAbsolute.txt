@@ -34,8 +34,6 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testi
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\runtimes\osx-x64\native\libSDL2-2.0.dylib
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\runtimes\win-arm64\native\SDL2.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\runtimes\win-x64\native\SDL2.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\VoxelGame.Engine.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\VoxelGame.Engine.pdb
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\obj\Debug\net7.0\VoxelGame.Testing.csproj.AssemblyReference.cache
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\obj\Debug\net7.0\VoxelGame.Testing.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\obj\Debug\net7.0\VoxelGame.Testing.AssemblyInfoInputs.cache
@@ -87,3 +85,6 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testi
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Resources\Models\bounding_box.obj
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Resources\Images\Colors\green.png
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Jitter2.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\CopperEngine.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\CopperEngine.pdb
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Resources\test.txt

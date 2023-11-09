@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using Silk.NET.OpenGL;
 
-namespace VoxelGame.Engine.Rendering;
+namespace CopperEngine.Rendering;
 
 internal class Shader : IDisposable
 {

@@ -1,7 +1,7 @@
-﻿using VoxelGame.Engine.Data;
-using VoxelGame.Engine.Scenes;
+﻿using CopperEngine.Data;
+using CopperEngine.Scenes;
 
-namespace VoxelGame.Engine.Components;
+namespace CopperEngine.Components;
 
 public class GameComponent
 {

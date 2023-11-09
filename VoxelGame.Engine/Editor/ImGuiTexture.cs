@@ -1,10 +1,10 @@
 ﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using CopperEngine.Utils;
 using Silk.NET.OpenGL;
-using VoxelGame.Engine.Utils;
 
-namespace VoxelGame.Engine.Editor;
+namespace CopperEngine.Editor;
 
 internal enum TextureCoordinate
 {

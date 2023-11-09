@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v7.0": {
-      "VoxelGame.Engine/1.0.0": {
+      "CopperEngine/1.0.0": {
         "dependencies": {
           "Jitter2": "2.0.1",
           "Silk.NET": "2.18.0",
@@ -17,7 +17,7 @@
           "Twizzle.ImGuizmo.NET": "1.89.4.1"
         },
         "runtime": {
-          "VoxelGame.Engine.dll": {}
+          "CopperEngine.dll": {}
         }
       },
       "Jitter2/2.0.1": {
@@ -457,7 +457,7 @@
     }
   },
   "libraries": {
-    "VoxelGame.Engine/1.0.0": {
+    "CopperEngine/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

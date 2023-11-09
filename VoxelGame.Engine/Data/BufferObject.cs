@@ -1,6 +1,6 @@
 ﻿using Silk.NET.OpenGL;
 
-namespace VoxelGame.Engine.Data;
+namespace CopperEngine.Data;
 
 public class BufferObject<TDataType> : IDisposable
     where TDataType : unmanaged

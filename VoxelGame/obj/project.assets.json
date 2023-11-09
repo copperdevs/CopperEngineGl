@@ -631,7 +631,7 @@
           }
         }
       },
-      "VoxelGame.Engine/1.0.0": {
+      "CopperEngine/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -644,10 +644,10 @@
           "Twizzle.ImGuizmo.NET": "1.89.4.1"
         },
         "compile": {
-          "bin/placeholder/VoxelGame.Engine.dll": {}
+          "bin/placeholder/CopperEngine.dll": {}
         },
         "runtime": {
-          "bin/placeholder/VoxelGame.Engine.dll": {}
+          "bin/placeholder/CopperEngine.dll": {}
         }
       }
     }
@@ -1532,7 +1532,7 @@
         "ultz.native.sdl.nuspec"
       ]
     },
-    "VoxelGame.Engine/1.0.0": {
+    "CopperEngine/1.0.0": {
       "type": "project",
       "path": "../VoxelGame.Engine/VoxelGame.Engine.csproj",
       "msbuildProject": "../VoxelGame.Engine/VoxelGame.Engine.csproj"
@@ -1540,7 +1540,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "VoxelGame.Engine >= 1.0.0"
+      "CopperEngine >= 1.0.0"
     ]
   },
   "packageFolders": {

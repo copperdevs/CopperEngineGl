@@ -1,7 +1,8 @@
-﻿using Silk.NET.OpenGL;
-using VoxelGame.Engine.Data;
+﻿using CopperEngine.Data;
+using Silk.NET.OpenGL;
+using Texture = CopperEngine.Rendering.Texture;
 
-namespace VoxelGame.Engine.Rendering;
+namespace CopperEngine.Rendering;
 
 internal class Mesh : IDisposable
 {

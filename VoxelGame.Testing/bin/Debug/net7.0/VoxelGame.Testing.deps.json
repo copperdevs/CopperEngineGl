@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v7.0": {
       "VoxelGame.Testing/1.0.0": {
         "dependencies": {
-          "VoxelGame.Engine": "1.0.0"
+          "CopperEngine": "1.0.0",
+          "CopperEngine.Reference": "1.0.0.0"
         },
         "runtime": {
           "VoxelGame.Testing.dll": {}
@@ -448,7 +449,7 @@
           }
         }
       },
-      "VoxelGame.Engine/1.0.0": {
+      "CopperEngine/1.0.0": {
         "dependencies": {
           "Jitter2": "2.0.1",
           "Silk.NET": "2.18.0",
@@ -459,7 +460,15 @@
           "Twizzle.ImGuizmo.NET": "1.89.4.1"
         },
         "runtime": {
-          "VoxelGame.Engine.dll": {}
+          "CopperEngine.dll": {}
+        }
+      },
+      "CopperEngine.Reference/1.0.0.0": {
+        "runtime": {
+          "CopperEngine.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -715,8 +724,13 @@
       "path": "ultz.native.sdl/2.24.3.1",
       "hashPath": "ultz.native.sdl.2.24.3.1.nupkg.sha512"
     },
-    "VoxelGame.Engine/1.0.0": {
+    "CopperEngine/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CopperEngine.Reference/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

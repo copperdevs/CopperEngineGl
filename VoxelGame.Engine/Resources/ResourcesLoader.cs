@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Text;
 
-namespace VoxelGame.Engine;
+namespace CopperEngine.Resources;
 
 public static class ResourcesLoader
 {

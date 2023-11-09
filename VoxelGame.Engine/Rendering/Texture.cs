@@ -1,7 +1,7 @@
 ﻿using Silk.NET.Assimp;
 using Silk.NET.OpenGL;
 
-namespace VoxelGame.Engine.Rendering;
+namespace CopperEngine.Rendering;
 
 internal class Texture : IDisposable
 {

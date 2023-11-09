@@ -1,21 +1,23 @@
-﻿using Silk.NET.Input;
+﻿using CopperEngine.Info;
+using CopperEngine.Logs;
+using Silk.NET.Input;
 using Silk.NET.Maths;
 using Silk.NET.OpenGL;
 using Silk.NET.Windowing;
-using VoxelGame.Engine.Info;
-using VoxelGame.Engine.Logs;
+using SilkWindow = Silk.NET.Windowing.IWindow;
+using SilkGl = Silk.NET.OpenGL.GL;
+using SilkInput = Silk.NET.Input.IInputContext;
 
-namespace VoxelGame.Engine;
+namespace CopperEngine;
 
-internal static class VoxelWindow
+internal static class EngineWindow
 {
     private static bool initialized;
     internal static bool WindowLoaded { get; private set; }
 
-    internal static IWindow? Window;
-    internal static GL? Gl;
-    internal static IInputContext? InputContext;
-    
+    internal static SilkWindow? Window;
+    internal static SilkGl? Gl;
+    internal static SilkInput? InputContext;
     
     internal static void Initialize(Action loadAction)
     {
@@ -25,7 +27,7 @@ internal static class VoxelWindow
         
         var options = WindowOptions.Default;
         options.Size = new Vector2D<int>(650, 400);
-        options.Title = "VoxelWindow.Testing";
+        options.Title = "CopperEngine";
         options.VSync = false;
         
         Window = Silk.NET.Windowing.Window.Create(options);
@@ -53,14 +55,14 @@ internal static class VoxelWindow
         {
             Time.DeltaTime = (float) delta;
             Time.TotalTime = (float) Window.Time;
-            VoxelEditor.Update(delta);
-            VoxelRenderer.Render();
+            EngineEditor.Update(delta);
+            EngineRenderer.Render();
             Log.DeepInfo($"Window render - {delta}");
         };
 
         Window.Closing += () =>
         {
-            VoxelEditor.ImGuiController?.Dispose();
+            EngineEditor.ImGuiController?.Dispose();
             Gl?.Dispose();
             InputContext?.Dispose();
             Log.Info("Closing Window");

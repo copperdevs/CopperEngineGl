@@ -1,9 +1,9 @@
 ﻿using System.Numerics;
 using Silk.NET.Windowing;
 
-namespace VoxelGame.Engine;
+namespace CopperEngine;
 
-public class VoxelApplication
+public class GameApplication
 {
     public virtual void Load() { }
     public virtual void Update(float delta) { }

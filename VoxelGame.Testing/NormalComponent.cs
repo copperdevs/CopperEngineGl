@@ -1,4 +1,4 @@
-﻿using VoxelGame.Engine.Components;
+﻿using CopperEngine.Components;
 
 namespace VoxelGame.Testing;
 

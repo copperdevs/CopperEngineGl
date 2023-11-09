@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Silk.NET.OpenGL;
 
-namespace VoxelGame.Engine.Editor;
+namespace CopperEngine.Editor;
 
 internal struct UniformFieldInfo
 {

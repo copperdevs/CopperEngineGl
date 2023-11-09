@@ -1,22 +1,16 @@
 ﻿using System.Numerics;
+using CopperEngine.Components;
+using CopperEngine.Info;
+using CopperEngine.Scenes;
 using Silk.NET.Input;
-using VoxelGame.Engine.Components;
-using VoxelGame.Engine.Data;
-using VoxelGame.Engine.Info;
-using VoxelGame.Engine.Logs;
-using VoxelGame.Engine.Scenes;
 
-namespace VoxelGame.Engine;
+namespace CopperEngine;
 
-// TODO: add physics :3
-// https://github.com/bepu/bepuphysics2/tree/master
-// https://github.com/bepu/bepuphysics2/blob/master/Documentation/GettingStarted.md
-// https://github.com/bepu/bepuphysics2/blob/master/Demos/Demos/SimpleSelfContainedDemo.cs
-public static class VoxelEngine
+public static class Engine
 {
     private static bool initialized;
     internal static readonly Scene EngineAssets = Scene.CreateScene("Engine Assets");
-    private static VoxelApplication? Application;
+    private static GameApplication? application;
 
     public static void Initialize()
     {
@@ -24,23 +18,23 @@ public static class VoxelEngine
     }
 
 
-    public static void Initialize<T>() where T : VoxelApplication, new()
+    public static void Initialize<T>() where T : GameApplication, new()
     {
-        Application = new T();
+        application = new T();
         
         Initialize((() =>
         {
             // app stuff
-            // VoxelWindow.Window.Load += Application.Load;
-            Application.Load();
-            VoxelWindow.Window!.Update += delta => Application.Update((float)delta);
-            VoxelWindow.Window.Render += delta => Application.Render((float)delta);
-            VoxelEditor.RenderEditor += Application.EditorRender;
-            VoxelWindow.Window.Closing += Application.Close;
-            VoxelWindow.Window.Move += position => Application.WindowMove(new Vector2(position.X, position.Y));
-            VoxelWindow.Window.Resize += size => Application.WindowResize(new Vector2(size.X, size.Y));
-            VoxelWindow.Window.StateChanged += Application.WindowStateChange;
-            VoxelWindow.Window.FramebufferResize += size => Application.WindowFrameBufferResize(new Vector2(size.X, size.Y));
+            // EngineWindow.Window.Load += Application.Load;
+            application.Load();
+            EngineWindow.Window!.Update += delta => application.Update((float)delta);
+            EngineWindow.Window.Render += delta => application.Render((float)delta);
+            EngineEditor.RenderEditor += application.EditorRender;
+            EngineWindow.Window.Closing += application.Close;
+            EngineWindow.Window.Move += position => application.WindowMove(new Vector2(position.X, position.Y));
+            EngineWindow.Window.Resize += size => application.WindowResize(new Vector2(size.X, size.Y));
+            EngineWindow.Window.StateChanged += application.WindowStateChange;
+            EngineWindow.Window.FramebufferResize += size => application.WindowFrameBufferResize(new Vector2(size.X, size.Y));
         }));
     }
     
@@ -50,24 +44,28 @@ public static class VoxelEngine
             return;
         initialized = true;
         
-        VoxelWindow.Initialize(() =>
+        EngineWindow.Initialize(() =>
         {
             // engine initialize
-            VoxelRenderer.Initialize();
-            VoxelEditor.Initialize();
-            Input.Initialize(VoxelWindow.InputContext?.Keyboards[0]);
+            EngineRenderer.Initialize();
+            EngineEditor.Initialize();
+            Input.Initialize();
+            
+            #if DEBUG
             
             // engine assets
             EngineAssets.AddComponent<CameraController>();
             
             // testing stuff
-            Input.RegisterInput(Key.Escape, VoxelWindow.Window!.Close, Input.RegisterType.Pressed);
+            Input.RegisterInput(Key.Escape, EngineWindow.Window!.Close, Input.RegisterType.Pressed);
+            
+            #endif
             
             // physics
             Task.Run(async () =>
             {
                 const float fixedUpdate = 0.02f;
-                while (VoxelWindow.WindowLoaded || initialized)
+                while (EngineWindow.WindowLoaded || initialized)
                 {
                     SceneManager.GameObjectsPreFixedUpdate(EngineAssets);
                     SceneManager.CurrentSceneGameObjectsPreFixedUpdate();
@@ -87,18 +85,21 @@ public static class VoxelEngine
             loadEvent.Invoke();
         });
 
-        VoxelWindow.Window!.Closing += () =>
+        EngineWindow.Window!.Closing += () =>
         {
             SceneManager.CurrentSceneGameObjectsStop();
             SceneManager.GameObjectsStop(EngineAssets);
-            VoxelRenderer.Close();
+            EngineRenderer.Close();
         };
 
-        VoxelWindow.Window!.Update += delta =>
+        EngineWindow.Window.Update += delta =>
         {
             Input.CheckInput();
-            VoxelWindow.SetTitle($"Voxel Game | Delta Time - {delta} | Size - <{VoxelWindow.Window.Size.X},{VoxelWindow.Window.Size.Y}>");
 
+            #if DEBUG
+            EngineWindow.SetTitle($"CopperEngine | Delta Time - {delta} | Size - <{EngineWindow.Window.Size.X},{EngineWindow.Window.Size.Y}>");
+            #endif
+            
             SceneManager.GameObjectsPreUpdate(EngineAssets);
             SceneManager.CurrentSceneGameObjectsPreUpdate();
             
@@ -112,8 +113,8 @@ public static class VoxelEngine
 
     public static void Run()
     {
-        VoxelWindow.Run();
+        EngineWindow.Run();
         
-        VoxelWindow.Window?.Dispose();
+        EngineWindow.Window?.Dispose();
     }
 }

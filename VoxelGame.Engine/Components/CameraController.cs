@@ -1,10 +1,10 @@
 ﻿using System.Numerics;
+using CopperEngine.Data;
+using CopperEngine.Info;
+using CopperEngine.Utils;
 using Silk.NET.Input;
-using VoxelGame.Engine.Data;
-using VoxelGame.Engine.Info;
-using VoxelGame.Engine.Utils;
 
-namespace VoxelGame.Engine.Components;
+namespace CopperEngine.Components;
 
 internal class CameraController : GameComponent
 {
@@ -21,37 +21,37 @@ internal class CameraController : GameComponent
         //forward 
         Input.RegisterInput(Key.W, () =>
         {
-            if(CanMove) VoxelRenderer.Camera.Position += TargetMoveSpeed * VoxelRenderer.Camera.Front;
+            if(CanMove) EngineRenderer.Camera.Position += TargetMoveSpeed * EngineRenderer.Camera.Front;
         }, Input.RegisterType.Down);
         
         // back
         Input.RegisterInput(Key.S, () =>
         {
-            if(CanMove) VoxelRenderer.Camera.Position -= TargetMoveSpeed * VoxelRenderer.Camera.Front;
+            if(CanMove) EngineRenderer.Camera.Position -= TargetMoveSpeed * EngineRenderer.Camera.Front;
         }, Input.RegisterType.Down);
         
         // left
         Input.RegisterInput(Key.A, () =>
         {
-            if(CanMove) VoxelRenderer.Camera.Position -= Vector3.Normalize(Vector3.Cross(VoxelRenderer.Camera.Front, VoxelRenderer.Camera.Up)) * TargetMoveSpeed;
+            if(CanMove) EngineRenderer.Camera.Position -= Vector3.Normalize(Vector3.Cross(EngineRenderer.Camera.Front, EngineRenderer.Camera.Up)) * TargetMoveSpeed;
         }, Input.RegisterType.Down);
         
         // right
         Input.RegisterInput(Key.D, () =>
         {
-            if(CanMove) VoxelRenderer.Camera.Position += Vector3.Normalize(Vector3.Cross(VoxelRenderer.Camera.Front, VoxelRenderer.Camera.Up)) * TargetMoveSpeed;
+            if(CanMove) EngineRenderer.Camera.Position += Vector3.Normalize(Vector3.Cross(EngineRenderer.Camera.Front, EngineRenderer.Camera.Up)) * TargetMoveSpeed;
         }, Input.RegisterType.Down);
         
         // up
         Input.RegisterInput(Key.Space, () =>
         {
-            if(CanMove) VoxelRenderer.Camera.Position += TargetMoveSpeed * VoxelRenderer.Camera.Up;
+            if(CanMove) EngineRenderer.Camera.Position += TargetMoveSpeed * EngineRenderer.Camera.Up;
         }, Input.RegisterType.Down);
         
         // down
         Input.RegisterInput(Key.ControlLeft, () =>
         {
-            if(CanMove) VoxelRenderer.Camera.Position -= TargetMoveSpeed * VoxelRenderer.Camera.Up;
+            if(CanMove) EngineRenderer.Camera.Position -= TargetMoveSpeed * EngineRenderer.Camera.Up;
         }, Input.RegisterType.Down);
         
         // zoom
@@ -87,17 +87,17 @@ internal class CameraController : GameComponent
             var xOffset = (Input.MousePosition.X - lastMousePosition.X) * lookSensitivity;
             var yOffset = (Input.MousePosition.Y - lastMousePosition.Y) * lookSensitivity;
             lastMousePosition = Input.MousePosition;
-            VoxelRenderer.Camera.Yaw += xOffset;
-            VoxelRenderer.Camera.Pitch -= yOffset;
+            EngineRenderer.Camera.Yaw += xOffset;
+            EngineRenderer.Camera.Pitch -= yOffset;
         }
 
         //We don't want to be able to look behind us by going over our head or under our feet so make sure it stays within these bounds
-        VoxelRenderer.Camera.Pitch = Math.Clamp(VoxelRenderer.Camera.Pitch, -89.0f, 89.0f);
+        EngineRenderer.Camera.Pitch = Math.Clamp(EngineRenderer.Camera.Pitch, -89.0f, 89.0f);
 
-        VoxelRenderer.Camera.Direction.X = MathF.Cos(MathUtil.DegreesToRadians(VoxelRenderer.Camera.Yaw)) * MathF.Cos(MathUtil.DegreesToRadians(VoxelRenderer.Camera.Pitch));
-        VoxelRenderer.Camera.Direction.Y = MathF.Sin(MathUtil.DegreesToRadians(VoxelRenderer.Camera.Pitch));
-        VoxelRenderer.Camera.Direction.Z = MathF.Sin(MathUtil.DegreesToRadians(VoxelRenderer.Camera.Yaw)) * MathF.Cos(MathUtil.DegreesToRadians(VoxelRenderer.Camera.Pitch));
-        VoxelRenderer.Camera.Front = Vector3.Normalize(VoxelRenderer.Camera.Direction);
+        EngineRenderer.Camera.Direction.X = MathF.Cos(MathUtil.DegreesToRadians(EngineRenderer.Camera.Yaw)) * MathF.Cos(MathUtil.DegreesToRadians(EngineRenderer.Camera.Pitch));
+        EngineRenderer.Camera.Direction.Y = MathF.Sin(MathUtil.DegreesToRadians(EngineRenderer.Camera.Pitch));
+        EngineRenderer.Camera.Direction.Z = MathF.Sin(MathUtil.DegreesToRadians(EngineRenderer.Camera.Yaw)) * MathF.Cos(MathUtil.DegreesToRadians(EngineRenderer.Camera.Pitch));
+        EngineRenderer.Camera.Front = Vector3.Normalize(EngineRenderer.Camera.Direction);
         
         
     }

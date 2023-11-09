@@ -1,4 +1,4 @@
-﻿namespace VoxelGame.Engine.Utils;
+﻿namespace CopperEngine.Utils;
 
 public static class FileUtil
 {

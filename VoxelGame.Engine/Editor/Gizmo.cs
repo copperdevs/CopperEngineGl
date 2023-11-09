@@ -1,11 +1,6 @@
-﻿using System.Numerics;
-using ImGuiNET;
-using ImGuizmoNET;
-using VoxelGame.Engine.Components;
-using VoxelGame.Engine.Data;
-using VoxelGame.Engine.Utils;
+﻿using CopperEngine.Components;
 
-namespace VoxelGame.Engine.Editor;
+namespace CopperEngine.Editor;
 
 internal static class Gizmo
 {

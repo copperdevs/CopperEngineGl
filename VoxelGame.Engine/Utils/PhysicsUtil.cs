@@ -1,8 +1,7 @@
 ﻿using System.Numerics;
 using Jitter2.Dynamics;
-using Jitter2.LinearMath;
 
-namespace VoxelGame.Engine.Utils;
+namespace CopperEngine.Utils;
 
 public static class PhysicsUtil
 {

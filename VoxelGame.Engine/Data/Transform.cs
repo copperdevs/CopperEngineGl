@@ -1,7 +1,6 @@
 ﻿using System.Numerics;
-using VoxelGame.Engine.Logs;
 
-namespace VoxelGame.Engine.Data;
+namespace CopperEngine.Data;
 
 public class Transform
 {

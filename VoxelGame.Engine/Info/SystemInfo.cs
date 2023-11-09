@@ -1,4 +1,4 @@
-﻿namespace VoxelGame.Engine.Info;
+﻿namespace CopperEngine.Info;
 
 public static class SystemInfo
 {

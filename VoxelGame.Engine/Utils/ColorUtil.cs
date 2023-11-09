@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
-using VoxelGame.Engine.Logs;
+using CopperEngine.Logs;
 
-namespace VoxelGame.Engine.Utils;
+namespace CopperEngine.Utils;
 
 public static class ColorUtil
 {

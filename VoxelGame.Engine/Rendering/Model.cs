@@ -1,10 +1,11 @@
 ﻿using System.Numerics;
+using CopperEngine.Data;
 using Silk.NET.Assimp;
 using Silk.NET.OpenGL;
-using VoxelGame.Engine.Data;
 using AssimpMesh = Silk.NET.Assimp.Mesh;
+using Texture = CopperEngine.Rendering.Texture;
 
-namespace VoxelGame.Engine.Rendering;
+namespace CopperEngine.Rendering;
 
 internal class Model : IDisposable
 {

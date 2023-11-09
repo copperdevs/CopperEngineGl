@@ -1,9 +1,9 @@
-﻿using Jitter2.Collision.Shapes;
+﻿using CopperEngine.Components;
+using CopperEngine.Rendering;
+using Jitter2.Collision.Shapes;
 using Jitter2.Dynamics;
-using VoxelGame.Engine.Components;
-using VoxelGame.Engine.Rendering;
 
-namespace VoxelGame.Engine.Physics;
+namespace CopperEngine.Physics;
 
 [UniqueComponent, RequireComponent(typeof(CopperModel))]
 public class MeshRigidbody : GameComponent, IRigidbody

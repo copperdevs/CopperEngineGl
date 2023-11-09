@@ -1,6 +1,6 @@
-﻿using VoxelGame.Engine.Logs;
+﻿using CopperEngine.Logs;
 
-namespace VoxelGame.Engine.Components;
+namespace CopperEngine.Components;
 
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
 public class RequireComponentAttribute : Attribute

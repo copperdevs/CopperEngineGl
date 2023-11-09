@@ -1532,7 +1532,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\715263\\Desktop\\School-Work\\Dev\\Projects\\Rider\\VoxelGame\\VoxelGame.Engine\\VoxelGame.Engine.csproj",
-      "projectName": "VoxelGame.Engine",
+      "projectName": "CopperEngine",
       "projectPath": "C:\\Users\\715263\\Desktop\\School-Work\\Dev\\Projects\\Rider\\VoxelGame\\VoxelGame.Engine\\VoxelGame.Engine.csproj",
       "packagesPath": "C:\\Users\\715263\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\715263\\Desktop\\School-Work\\Dev\\Projects\\Rider\\VoxelGame\\VoxelGame.Engine\\obj\\",
