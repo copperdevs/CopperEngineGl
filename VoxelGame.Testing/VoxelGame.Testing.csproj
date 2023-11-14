@@ -12,4 +12,15 @@
       <ProjectReference Include="..\VoxelGame.Engine\VoxelGame.Engine.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Resources\Models\terrain.mtl" />
+      <EmbeddedResource Include="Resources\Models\terrain.mtl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Models\terrain.obj" />
+      <EmbeddedResource Include="Resources\Models\terrain.obj">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
+
 </Project>

@@ -19,7 +19,6 @@ public class TestingApplication : GameApplication
         testCube.AddComponent(new Model("Resources/Images/copper.png", "Resources/Models/cube.obj"));
         testCube.AddComponent<ReflectionTesting>();
 
-
         var chunkScene = Scene.CreateScene("Chunk Scene");
         
         var chunk = new Chunk();
@@ -43,5 +42,10 @@ public class TestingApplication : GameApplication
                 }
             }
         }
+
+        var terrainScene = Scene.CreateScene("Terrain Scene");
+
+        var terrain = scene.CreateGameObject();
+        terrain.AddComponent(new Model("Resources/Images/Colors/green.png", "Resources/Models/terrain.obj"));
     }
 }

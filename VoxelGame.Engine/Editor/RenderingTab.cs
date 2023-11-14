@@ -28,6 +28,7 @@ internal static class RenderingTab
             
             if (ImGui.CollapsingHeader(renderFeature.GetType().FullName))
             {
+                ImGui.Indent();
                 var fieldInfos = renderFeature.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public);
                 foreach (var fieldInfo in fieldInfos)
                 {
@@ -41,6 +42,7 @@ internal static class RenderingTab
                     }
                     // ImGui.Text($"{fieldInfo.FieldType.FullName}");
                 }
+                ImGui.Unindent();
             }
 
             renderFeatures[index] = renderFeature;

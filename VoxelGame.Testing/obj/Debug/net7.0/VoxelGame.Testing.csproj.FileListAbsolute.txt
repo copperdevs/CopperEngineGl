@@ -92,3 +92,5 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testi
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Resources\Models\skybox.obj
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Resources\Images\skybox.png
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Resources\Shaders\skybox.frag
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Resources\Models\terrain.mtl
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Testing\bin\Debug\net7.0\Resources\Models\terrain.obj
