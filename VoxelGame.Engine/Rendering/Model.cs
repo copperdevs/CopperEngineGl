@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using CopperEngine.Components;
+using CopperEngine.Rendering.Internal;
 using ImGuiNET;
 using Silk.NET.OpenGL;
 using InternalShader = CopperEngine.Rendering.Internal.Shader;
@@ -20,6 +21,11 @@ public class Model : GameComponent
     internal InternalModel? LoadedModel { get; private set; }
     private readonly InternalTexture? texture;
     private static readonly GL Gl = EngineWindow.Gl!;
+    public List<Mesh> LoadedMeshes
+    {
+        get => LoadedModel?.Meshes ?? Array.Empty<Mesh>().ToList();
+        set => LoadedModel!.Meshes = value;
+    }
 
     private readonly string texturePath;
     private readonly string modelPath;

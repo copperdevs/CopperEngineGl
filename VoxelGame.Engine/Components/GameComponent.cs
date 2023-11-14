@@ -19,4 +19,11 @@ public class GameComponent
     public virtual void Render() { }
     public virtual void RenderEditor() { }
     public virtual void Stop() { }
+    
+    public void AddComponent<T>() where T : GameComponent, new() => Parent?.AddComponent<T>();
+    public GameComponent[] GetComponents<T>() where T : GameComponent => Parent?.GetComponents<T>() ?? Array.Empty<GameComponent>();
+    public GameComponent GetFirstComponent<T>() where T : GameComponent => Parent?.GetFirstComponent<T>() ?? new GameComponent();
+    public bool TryGetComponents<T>(out GameComponent[] components) where T : GameComponent => Parent!.TryGetComponents<T>(out components);
+    public bool TryGetFirstComponent<T>(out GameComponent component) where T : GameComponent => Parent!.TryGetFirstComponent<T>(out component);
+    public void RemoveComponents<T>() where T : GameComponent, new() => Parent?.RemoveComponents<T>();
 }

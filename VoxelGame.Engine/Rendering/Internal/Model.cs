@@ -23,7 +23,7 @@ internal class Model : IDisposable
     private Assimp _assimp;
     private List<Texture> _texturesLoaded = new List<Texture>();
     public string Directory { get; protected set; } = string.Empty;
-    public List<Mesh> Meshes { get; protected set; } = new List<Mesh>();
+    public List<Mesh> Meshes { get; set; } = new List<Mesh>();
         
     private unsafe void LoadModel(string path)
     {

@@ -132,6 +132,11 @@
       <EmbeddedResource Include="Resources\Shaders\skybox.frag">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
+      <None Remove="Resources\Images\Colors\blue.png" />
+      <EmbeddedResource Include="Resources\Images\Colors\blue.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
     </ItemGroup>
+
 
 </Project>

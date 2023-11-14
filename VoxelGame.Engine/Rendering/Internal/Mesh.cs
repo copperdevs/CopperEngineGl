@@ -3,7 +3,7 @@ using Silk.NET.OpenGL;
 
 namespace CopperEngine.Rendering.Internal;
 
-internal class Mesh : IDisposable
+public class Mesh : IDisposable
 {
     public Mesh(GL gl, float[] vertices, uint[] indices, List<Texture> textures)
     {
@@ -17,9 +17,9 @@ internal class Mesh : IDisposable
     public float[] Vertices { get; private set; }
     public uint[] Indices { get; private set; }
     public IReadOnlyList<Texture> Textures { get; private set; }
-    public VertexArrayObject<float, uint> VAO { get; set; }
-    public BufferObject<float> VBO { get; set; }
-    public BufferObject<uint> EBO { get; set; }
+    internal VertexArrayObject<float, uint> VAO { get; set; }
+    internal BufferObject<float> VBO { get; set; }
+    internal BufferObject<uint> EBO { get; set; }
     public GL GL { get; }
 
     public unsafe void SetupMesh()

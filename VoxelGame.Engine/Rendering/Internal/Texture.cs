@@ -3,7 +3,7 @@ using Silk.NET.OpenGL;
 
 namespace CopperEngine.Rendering.Internal;
 
-internal class Texture : IDisposable
+public class Texture : IDisposable
 {
     internal Guid Id;
     

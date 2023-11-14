@@ -56,5 +56,11 @@ public class TestingApplication : GameApplication
         var lightingCube = lightingScene.CreateGameObject();
         lightingCube.AddComponent(new Model("Resources/Images/silk.png", "Resources/Models/cube.obj"));
         lightingCube.AddComponent<Light>();
+
+        var proceduralScene = SceneManager.CreateScene("Procedural Scene");
+
+        var waterPlane = proceduralScene.CreateGameObject();
+        waterPlane.AddComponent(new Model("Resources/Images/Colors/blue.png", "Resources/Models/cube.obj"));
+        waterPlane.AddComponent<WaterTest>();
     }
 }
