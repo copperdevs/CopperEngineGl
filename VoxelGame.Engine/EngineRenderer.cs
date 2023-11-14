@@ -12,8 +12,11 @@ using Shader = CopperEngine.Rendering.Internal.Shader;
 
 namespace CopperEngine;
 
-// TODO: https://github.com/dotnet/Silk.NET/tree/main/examples/CSharp/OpenGL%20Tutorials
-// Lighting
+// TODO: Ambient Lighting - https://github.com/dotnet/Silk.NET/tree/main/examples/CSharp/OpenGL%20Tutorials/Tutorial%203.1%20-%20Ambient%20Lighting
+// TODO: Diffuse Lighting - https://github.com/dotnet/Silk.NET/tree/main/examples/CSharp/OpenGL%20Tutorials/Tutorial%203.2%20-%20Diffuse%20Lighting
+// TODO: Specular Lighting - https://github.com/dotnet/Silk.NET/tree/main/examples/CSharp/OpenGL%20Tutorials/Tutorial%203.3%20-%20Specular%20Lighting
+// TODO: Materials - https://github.com/dotnet/Silk.NET/tree/main/examples/CSharp/OpenGL%20Tutorials/Tutorial%203.4%20-%20Materials
+// TODO: Lighting Maps -  https://github.com/dotnet/Silk.NET/tree/main/examples/CSharp/OpenGL%20Tutorials/Tutorial%203.5%20-%20Lighting%20Maps
 public static class EngineRenderer
 {
     private static bool initialized;
