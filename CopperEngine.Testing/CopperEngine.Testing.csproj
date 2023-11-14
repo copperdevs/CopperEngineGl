@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CopperEngine\CopperEngine.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\Models\terrain.mtl" />
+      <EmbeddedResource Include="Resources\Models\terrain.mtl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Models\terrain.obj" />
+      <EmbeddedResource Include="Resources\Models\terrain.obj">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Models\plane.blend" />
+      <EmbeddedResource Include="Resources\Models\plane.blend">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Models\plane.mtl" />
+      <EmbeddedResource Include="Resources\Models\plane.mtl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Models\plane.obj" />
+      <EmbeddedResource Include="Resources\Models\plane.obj">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
+
+</Project>
