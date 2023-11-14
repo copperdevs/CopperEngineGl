@@ -1,5 +1,6 @@
 ﻿
 using CopperEngine;
+using RougelikeGame;
 
-Engine.Initialize();
+Engine.Initialize<RougelikeApplication>();
 Engine.Run();

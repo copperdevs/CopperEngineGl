@@ -69,4 +69,32 @@ public static class MathUtil
         value.Z = Clamp(value.Z, min.Z, max.Z);
         return value;
     }
+
+    public static float Lerp(float a, float b, float t)
+    {
+        return (1.0f - t) * a + b + t;
+    }
+
+    public static float InverseLerp(float a, float b, float v)
+    {
+        return (v - a) / (b - a);
+    }
+
+    public static float Remap(float iMin, float iMax, float oMin, float oMax, float v)
+    {
+        return Lerp(oMin, oMax, InverseLerp(iMin, iMax, v));
+    }
+
+    public static Vector3 Lerp(Vector3 a, Vector3 b, float t)
+    {
+        t = Clamp(t, 0, 1);
+
+        var distance = new Vector3(b.X - a.X, b.Y - a.Y,  b.Z - a.Z);
+        
+        var x = a.X + distance.X * t;
+        var y = a.Y + distance.Y * t;
+        var z = a.Z + distance.Z * t;
+
+        return new Vector3(x, y, z);
+    }
 }

@@ -62,5 +62,14 @@ public class TestingApplication : GameApplication
         var waterPlane = proceduralScene.CreateGameObject();
         waterPlane.AddComponent(new Model("Resources/Images/Colors/blue.png", "Resources/Models/cube.obj"));
         waterPlane.AddComponent<WaterTest>();
+
+        var lerpTestScene = SceneManager.CreateScene("lerp test");
+
+        var cubeOne = lerpTestScene.CreateGameObject();
+        cubeOne.AddComponent(new Model("Resources/Images/Colors/blue.png", "Resources/Models/cube.obj"));
+            
+        var cubeTwo = lerpTestScene.CreateGameObject();
+        cubeTwo.AddComponent(new Model("Resources/Images/Colors/green.png", "Resources/Models/cube.obj"));
+        cubeTwo.AddComponent(new LerpComponent(cubeOne));
     }
 }

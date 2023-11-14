@@ -5,9 +5,9 @@ namespace CopperEngine.Components;
 
 public class GameComponent
 {
-    internal GameObject? Parent;
-    internal Transform? Transform { get => Parent.Transform; set => Parent.Transform = value; }
-    internal Scene? ParentScene;
+    protected internal GameObject? Parent;
+    protected internal Transform? Transform { get => Parent.Transform; set => Parent.Transform = value; }
+    protected internal Scene? ParentScene;
     
     public virtual void Start() { }
     public virtual void PreUpdate() { }

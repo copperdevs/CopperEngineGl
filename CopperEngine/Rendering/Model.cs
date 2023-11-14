@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using CopperEngine.Components;
+using CopperEngine.Data;
 using CopperEngine.Rendering.Internal;
 using ImGuiNET;
 using Silk.NET.OpenGL;
@@ -63,18 +64,25 @@ public class Model : GameComponent
 
     public override void Render()
     {
+        RenderModel(TransformViewMatrix);
+    }
+
+    protected void RenderModel(Transform transform) => RenderModel(transform.Matrix);
+
+    protected void RenderModel(Matrix4x4 modelMatrix)
+    {
         foreach (var mesh in LoadedModel?.Meshes!)
         {
             mesh.Bind();
             Shader?.Use();
             texture?.Bind();
             Shader?.SetUniform("uTexture0", 0);
-            Shader?.SetUniform("uModel", TransformViewMatrix);
+            Shader?.SetUniform("uModel", modelMatrix);
             Shader?.SetUniform("uView", EngineRenderer.Camera.ViewMatrix);
             Shader?.SetUniform("uProjection", EngineRenderer.Camera.ProjectionMatrix);
 
             Gl.DrawArrays(PrimitiveType.Triangles, 0, (uint)mesh.Vertices.Length);
-        }
+        }  
     }
 
     public override void RenderEditor()
