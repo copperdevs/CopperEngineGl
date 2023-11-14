@@ -20,7 +20,7 @@ internal static class RenderingTab
     
     private static void RenderFeatureInspector()
     {
-        var renderFeatures = EngineRenderer.renderFeatures;
+        var renderFeatures = EngineRenderer.RenderFeatures;
 
         for (var index = 0; index < renderFeatures.Count; index++)
         {
@@ -48,7 +48,7 @@ internal static class RenderingTab
             renderFeatures[index] = renderFeature;
         }
         
-        EngineRenderer.renderFeatures = renderFeatures;
+        EngineRenderer.RenderFeatures = renderFeatures;
     }
 
     private static readonly Dictionary<Type, Action<FieldInfo, RenderFeature>> ImGuiRenderers = new()

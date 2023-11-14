@@ -45,7 +45,16 @@ public class TestingApplication : GameApplication
 
         var terrainScene = Scene.CreateScene("Terrain Scene");
 
-        var terrain = scene.CreateGameObject();
+        var terrain = terrainScene.CreateGameObject();
         terrain.AddComponent(new Model("Resources/Images/Colors/green.png", "Resources/Models/terrain.obj"));
+
+        var lightingScene = SceneManager.CreateScene("Lighting Scene");
+
+        var lightingTestCube = lightingScene.CreateGameObject();
+        lightingTestCube.AddComponent(new Model("Resources/Images/copper.png", "Resources/Models/cube.obj"));
+
+        var lightingCube = lightingScene.CreateGameObject();
+        lightingCube.AddComponent(new Model("Resources/Images/silk.png", "Resources/Models/cube.obj"));
+        lightingCube.AddComponent<Light>();
     }
 }

@@ -23,10 +23,9 @@ public static class EngineRenderer
     private static GL Gl => EngineWindow.Gl!;
     internal static Shader Shader { get; private set; }
 
-    internal static Action? LoadPreModels;
+    internal static List<RenderFeature> RenderFeatures = new();
 
-    internal static List<RenderFeature> renderFeatures = new();
-    
+    internal static List<Light> Lights = new();
     
     public static Camera Camera { get; internal set; } = new();
 
@@ -38,11 +37,11 @@ public static class EngineRenderer
         
         var vertShader = ResourcesLoader.LoadTextResourceDirect("CopperEngine.Resources.Shaders.shader.vert");
         var fragShader = ResourcesLoader.LoadTextResourceDirect("CopperEngine.Resources.Shaders.shader.frag");
-        Shader = new Shader(Gl, vertShader, fragShader);
+        Shader = new Shader(vertShader, fragShader);
         
         AddRenderFeature<SkyboxFeature>(); 
         
-        renderFeatures.ForEach(rf => rf.Start());
+        RenderFeatures.ForEach(rf => rf.Start());
     }
     
     internal static void Render()
@@ -53,15 +52,15 @@ public static class EngineRenderer
         Shader.Use();
         Shader.SetUniform("uTexture0", 0);
 
-        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.BeforeRenderingGameObjects).ToList().ForEach(rf => rf.Render());
+        RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.BeforeRenderingGameObjects).ToList().ForEach(rf => rf.Render());
         SceneManager.CurrentSceneGameObjectsRender();
         SceneManager.GameObjectsRender(CopperEngine.Engine.EngineAssets);
         EngineEditor.Render();
-        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterRenderingGameObjects).ToList().ForEach(rf => rf.Render());
-        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.BeforePostProcessing).ToList().ForEach(rf => rf.Render());
-        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.PostProcessing).ToList().ForEach(rf => rf.Render());
-        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterPostProcessing).ToList().ForEach(rf => rf.Render());
-        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterRendering).ToList().ForEach(rf => rf.Render());
+        RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterRenderingGameObjects).ToList().ForEach(rf => rf.Render());
+        RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.BeforePostProcessing).ToList().ForEach(rf => rf.Render());
+        RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.PostProcessing).ToList().ForEach(rf => rf.Render());
+        RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterPostProcessing).ToList().ForEach(rf => rf.Render());
+        RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterRendering).ToList().ForEach(rf => rf.Render());
     }
 
     internal static void Close()
@@ -69,6 +68,6 @@ public static class EngineRenderer
         Shader.Dispose();
     }
 
-    public static void AddRenderFeature(RenderFeature feature) => renderFeatures.Add(feature);
+    public static void AddRenderFeature(RenderFeature feature) => RenderFeatures.Add(feature);
     public static void AddRenderFeature<T>() where T : RenderFeature, new() => AddRenderFeature(new T());
 }

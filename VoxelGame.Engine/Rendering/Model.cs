@@ -1,7 +1,5 @@
 ﻿using System.Numerics;
 using CopperEngine.Components;
-using CopperEngine.Rendering.Internal;
-using CopperEngine.Rendering.Internal.RenderFeatures;
 using ImGuiNET;
 using Silk.NET.OpenGL;
 using InternalShader = CopperEngine.Rendering.Internal.Shader;
@@ -18,13 +16,13 @@ public class Model : GameComponent
     private static readonly Dictionary<string, InternalTexture> TextureLibrary = new();
 
     private Matrix4x4 TransformViewMatrix => Transform?.Matrix ?? Matrix4x4.Identity;
-    private readonly InternalShader? shader = EngineRenderer.Shader;
+    private static InternalShader? Shader => EngineRenderer.Shader;
     internal InternalModel? LoadedModel { get; private set; }
     private readonly InternalTexture? texture;
     private static readonly GL Gl = EngineWindow.Gl!;
 
-    private string TexturePath;
-    private string ModelPath;
+    private readonly string texturePath;
+    private readonly string modelPath;
     
     /// <summary>
     /// Loads a new model
@@ -33,8 +31,8 @@ public class Model : GameComponent
     /// <param name="modelPath">Path of the .obj model</param>
     public Model(string texturePath, string modelPath)
     {
-        TexturePath = texturePath;
-        ModelPath = modelPath;
+        this.texturePath = texturePath;
+        this.modelPath = modelPath;
         
         if (ModelLibrary.TryGetValue(modelPath, out var modelValue))
             LoadedModel = modelValue;
@@ -62,12 +60,12 @@ public class Model : GameComponent
         foreach (var mesh in LoadedModel?.Meshes!)
         {
             mesh.Bind();
-            shader?.Use();
+            Shader?.Use();
             texture?.Bind();
-            shader?.SetUniform("uTexture0", 0);
-            shader?.SetUniform("uModel", TransformViewMatrix);
-            shader?.SetUniform("uView", EngineRenderer.Camera.ViewMatrix);
-            shader?.SetUniform("uProjection", EngineRenderer.Camera.ProjectionMatrix);
+            Shader?.SetUniform("uTexture0", 0);
+            Shader?.SetUniform("uModel", TransformViewMatrix);
+            Shader?.SetUniform("uView", EngineRenderer.Camera.ViewMatrix);
+            Shader?.SetUniform("uProjection", EngineRenderer.Camera.ProjectionMatrix);
 
             Gl.DrawArrays(PrimitiveType.Triangles, 0, (uint)mesh.Vertices.Length);
         }
@@ -75,13 +73,13 @@ public class Model : GameComponent
 
     public override void RenderEditor()
     {
-        ImGui.LabelText("Model Name", Path.GetFileName(ModelPath));
-        ImGui.LabelText("Model Path", ModelPath);
+        ImGui.LabelText("Model Name", Path.GetFileName(modelPath));
+        ImGui.LabelText("Model Path", modelPath);
         
         ImGui.Text("");
         
-        ImGui.LabelText("Texture Name", Path.GetFileName(TexturePath));
-        ImGui.LabelText("Texture Path", TexturePath);
+        ImGui.LabelText("Texture Name", Path.GetFileName(texturePath));
+        ImGui.LabelText("Texture Path", texturePath);
     }
 
     public override void Stop()
