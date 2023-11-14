@@ -75,6 +75,36 @@ internal class Shader : IDisposable
         gl.Uniform1(location, value);
     }
 
+    public void SetUniform(string name, Vector3 value)
+    {
+        int location = gl.GetUniformLocation(handle, name);
+        if (location == -1)
+        {
+            throw new Exception($"{name} uniform not found on shader.");
+        }
+        gl.Uniform3(location, value);
+    }
+    
+    public void SetUniform(string name, int x, int y, int z)
+    {
+        int location = gl.GetUniformLocation(handle, name);
+        if (location == -1)
+        {
+            throw new Exception($"{name} uniform not found on shader.");
+        }
+        gl.Uniform3(location, x, y, z);
+    }
+    
+    public void SetUniform(string name, float x, float y, float z)
+    {
+        int location = gl.GetUniformLocation(handle, name);
+        if (location == -1)
+        {
+            throw new Exception($"{name} uniform not found on shader.");
+        }
+        gl.Uniform3(location, x, y, z);
+    }
+    
     public void Dispose()
     {
         //Remember to delete the program when we are done.

@@ -10,11 +10,24 @@ namespace CopperEngine.Editor;
 
 internal static class InfoWindow
 {
+    private struct InfoWindowTab
+    {
+        public readonly string Title;
+        public readonly Action WindowAction;
+        public bool TabOpen;
+
+        public InfoWindowTab(string title, Action windowAction, bool tabOpen)
+        {
+            Title = title;
+            WindowAction = windowAction;
+            TabOpen = tabOpen;
+        }
+    }
+    
     internal static bool IsOpen = true;
     private static bool initialized;
-    private static readonly List<(string, Action)> Tabs = new();
+    private static readonly List<InfoWindowTab> Tabs = new();
     private static List<(Guid, Scene)> scenes = new();
-    private static GameObject? currentObjectBrowserTarget;
     private static DateTime lastTime;
     private static int framesRendered;
     private static int fps;
@@ -28,15 +41,16 @@ internal static class InfoWindow
         
         Log.Info("Initializing Info Window");
 
-        Tabs.Add(("FPS / Time", TimeTab));
-        Tabs.Add(("Camera", CameraTab));
-        Tabs.Add(("Scene", SceneTab));
-        Tabs.Add(("Input", InputTab));
-        Tabs.Add(("Rendering", RenderingTab));
+        Tabs.Add(new InfoWindowTab("FPS / Time", TimeTab, true));
+        Tabs.Add(new InfoWindowTab("Camera", CameraTab, true));
+        Tabs.Add(new InfoWindowTab("Scene", SceneTab, true));
+        Tabs.Add(new InfoWindowTab("Input", InputTab, false));
+        Tabs.Add(new InfoWindowTab("Models", ModelsTab, true));
         // very complex compared to everything else so it got moved out
-        Tabs.Add(("Object Browser", ObjectBrowserTab.Render));
-        Tabs.Add(("Logs", LogsTab));
-        Tabs.Add(("System", SystemInfoTab));
+        Tabs.Add(new InfoWindowTab("Object Browser", ObjectBrowserTab.Render, true));
+        Tabs.Add(new InfoWindowTab("Logs", LogsTab, false));
+        Tabs.Add(new InfoWindowTab("System", SystemInfoTab, false));
+        Tabs.Add(new InfoWindowTab("Rendering", RenderingTab.Render, true));
         
         Log.Info("Initialized Info Window");
     }
@@ -65,18 +79,39 @@ internal static class InfoWindow
         {
             scenes = SceneManager.GetScenes();
 
-            const ImGuiTabBarFlags flags = ImGuiTabBarFlags.Reorderable | ImGuiTabBarFlags.NoCloseWithMiddleMouseButton;
+            const ImGuiTabBarFlags flags = ImGuiTabBarFlags.Reorderable;
 
             if (ImGui.BeginTabBar("info_window_tab_bar", flags))
             {
-                foreach (var tab in Tabs)
+                for (var index = 0; index < Tabs.Count; index++)
                 {
-                    if (ImGui.BeginTabItem(tab.Item1))
+                    var tab = Tabs[index];
+                    
+                    if (tab.TabOpen)
                     {
-                        tab.Item2.Invoke();
-                        ImGui.EndTabItem();
+                        if (ImGui.BeginTabItem(tab.Title, ref tab.TabOpen, ImGuiTabItemFlags.None))
+                        {
+                            tab.WindowAction.Invoke();
+                            ImGui.EndTabItem();
+                        }
                     }
+
+                    Tabs[index] = tab;
                 }
+            }
+            
+            if (ImGui.TabItemButton("+", ImGuiTabItemFlags.Trailing | ImGuiTabItemFlags.NoTooltip))
+                ImGui.OpenPopup("info_window_selection_popup");
+            if (ImGui.BeginPopup("info_window_selection_popup"))
+            {
+                for (var index = 0; index < Tabs.Count; index++)
+                {
+                    var tab = Tabs[index];
+                    ImGui.Selectable(tab.Title, ref tab.TabOpen);
+                    Tabs[index] = tab;
+                }
+                
+                ImGui.EndPopup();
             }
         }
     }
@@ -123,6 +158,7 @@ internal static class InfoWindow
         ImGui.DragFloat("Zoom", ref camera.Zoom, 1, 1, 45);
         ImGui.DragFloat("Normal Move Speed", ref CameraController.NormalMoveSpeed, 0.25f, 0, 50);
         ImGui.DragFloat("Fast Move Speed", ref CameraController.FastMoveSpeed, 0.25f, 0, 50);
+        ImGui.DragFloat2("Clipping Plane", ref camera.ClippingPlane, 1, 0.001f, 1000);
     }
 
     private static void SceneTab()
@@ -144,7 +180,7 @@ internal static class InfoWindow
         ImGui.DragFloat2($"Mouse Position", ref mousePosition);
     }
 
-    private static void RenderingTab()
+    private static void ModelsTab()
     {
         var models = new List<Model>();
         SceneManager.CurrentScene().GameObjects.ForEach(gm => gm.Components.ForEach(c => { if (c.GetType() == typeof(Model)) models.Add((Model)c); }));
@@ -163,7 +199,7 @@ internal static class InfoWindow
 
                 if (ImGui.CollapsingHeader($"Meshes##{index1}"))
                 {
-                    for (var i = 0; i < model.LoadedModel.Meshes.Count; i++)
+                    for (var i = 0; i < model.LoadedModel!.Meshes.Count; i++)
                     {
                         var mesh = model.LoadedModel.Meshes[i];
 

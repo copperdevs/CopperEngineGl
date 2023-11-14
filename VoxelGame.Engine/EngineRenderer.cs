@@ -1,9 +1,12 @@
 ﻿using System.Numerics;
 using CopperEngine.Components;
+using CopperEngine.Rendering;
+using CopperEngine.Rendering.Internal.RenderFeatures;
 using CopperEngine.Resources;
 using CopperEngine.Scenes;
 using CopperEngine.Utils;
 using Silk.NET.OpenGL;
+using Silk.NET.Vulkan;
 using Color = System.Drawing.Color;
 using Shader = CopperEngine.Rendering.Internal.Shader;
 
@@ -17,7 +20,9 @@ public static class EngineRenderer
     private static GL Gl => EngineWindow.Gl!;
     internal static Shader Shader { get; private set; }
 
-    internal static Action LoadPreModels;
+    internal static Action? LoadPreModels;
+
+    internal static List<RenderFeature> renderFeatures = new();
     
     
     public static Camera Camera { get; internal set; } = new();
@@ -31,6 +36,10 @@ public static class EngineRenderer
         var vertShader = ResourcesLoader.LoadTextResourceDirect("CopperEngine.Resources.Shaders.shader.vert");
         var fragShader = ResourcesLoader.LoadTextResourceDirect("CopperEngine.Resources.Shaders.shader.frag");
         Shader = new Shader(Gl, vertShader, fragShader);
+        
+        AddRenderFeature<SkyboxFeature>(); 
+        
+        renderFeatures.ForEach(rf => rf.Start());
     }
     
     internal static void Render()
@@ -38,17 +47,25 @@ public static class EngineRenderer
         Gl.Enable(EnableCap.DepthTest);
         EngineWindow.Gl?.ClearColor(Color.FromArgb(255, (int) (.45f * 255), (int) (.55f * 255), (int) (.60f * 255)));
         Gl.Clear((uint) (ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit));
-        
         Shader.Use();
         Shader.SetUniform("uTexture0", 0);
-        
+
+        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.BeforeRenderingGameObjects).ToList().ForEach(rf => rf.Render());
         SceneManager.CurrentSceneGameObjectsRender();
         SceneManager.GameObjectsRender(CopperEngine.Engine.EngineAssets);
         EngineEditor.Render();
+        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterRenderingGameObjects).ToList().ForEach(rf => rf.Render());
+        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.BeforePostProcessing).ToList().ForEach(rf => rf.Render());
+        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.PostProcessing).ToList().ForEach(rf => rf.Render());
+        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterPostProcessing).ToList().ForEach(rf => rf.Render());
+        renderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterRendering).ToList().ForEach(rf => rf.Render());
     }
 
     internal static void Close()
     {
         Shader.Dispose();
     }
+
+    public static void AddRenderFeature(RenderFeature feature) => renderFeatures.Add(feature);
+    public static void AddRenderFeature<T>() where T : RenderFeature, new() => AddRenderFeature(new T());
 }

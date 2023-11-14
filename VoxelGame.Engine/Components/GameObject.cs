@@ -7,6 +7,8 @@ namespace CopperEngine.Components;
 
 public class GameObject
 {
+    internal GameObject() {}
+    
     internal GameObject(Scene parentScene)
     {
         ParentScene = parentScene;

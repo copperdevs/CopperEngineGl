@@ -34,3 +34,7 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engin
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\CopperEngine.pdb
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\obj\Debug\net7.0\ref\CopperEngine.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\test.txt
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Models\skybox.mtl
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Models\skybox.obj
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Images\skybox.png
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\VoxelGame\VoxelGame.Engine\bin\Debug\net7.0\Resources\Shaders\skybox.frag

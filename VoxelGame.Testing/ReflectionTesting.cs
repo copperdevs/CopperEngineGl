@@ -17,4 +17,5 @@ public class ReflectionTesting : GameComponent
     public Guid GuidField;
     public Scene SceneField = Scene.CreateScene("Scene Field");
     public Transform TransformField = new();
+    public Color ColorField = new();
 }

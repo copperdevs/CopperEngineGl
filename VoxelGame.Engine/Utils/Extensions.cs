@@ -38,4 +38,10 @@ public static class Extensions
     public static Vector3 WithY(this Vector3 vector, float value) => vector with { Y = value };
     public static Vector3 WithZ(this Vector3 vector, float value) => vector with { Z = value };
     public static Vector3 Clamp(this Vector3 value, Vector3 min, Vector3 max) => MathUtil.Clamp(value, min, max);
+    
+
+    public static Vector4 WithX(this Vector4 vector, float value) => vector with { X = value };
+    public static Vector4 WithY(this Vector4 vector, float value) => vector with { Y = value };
+    public static Vector4 WithZ(this Vector4 vector, float value) => vector with { Z = value };
+    public static Vector4 WithW(this Vector4 vector, float value) => vector with { W = value };
 }

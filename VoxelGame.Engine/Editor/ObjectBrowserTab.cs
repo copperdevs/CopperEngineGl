@@ -6,6 +6,7 @@ using CopperEngine.Logs;
 using CopperEngine.Scenes;
 using CopperEngine.Utils;
 using ImGuiNET;
+using Color = CopperEngine.Data.Color;
 
 namespace CopperEngine.Editor;
 
@@ -128,6 +129,7 @@ internal static class ObjectBrowserTab
         { typeof(Guid), GuidFieldRenderer },
         { typeof(Scene), SceneFieldRenderer },
         { typeof(Transform), TransformFieldRenderer },
+        { typeof(Color), ColorFieldRenderer }
     };
 
     private static void FloatFieldRenderer(FieldInfo fieldInfo, GameComponent component)
@@ -229,6 +231,17 @@ internal static class ObjectBrowserTab
             }
 
             ImGui.Unindent();
+        }
+    }
+
+    private static void ColorFieldRenderer(FieldInfo fieldInfo, GameComponent component)
+    {
+        var value = (Color)(fieldInfo.GetValue(component) ?? new Color(0));
+        var color = value / 255;
+        Vector4 vecColor = color;
+        if (ImGui.ColorEdit4($"{fieldInfo.Name}##{fieldInfo.Name}", ref vecColor))
+        {
+            fieldInfo.SetValue(component, new Color(vecColor * 255));
         }
     }
 }

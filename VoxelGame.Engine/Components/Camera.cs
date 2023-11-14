@@ -12,6 +12,7 @@ public class Camera
     public float Yaw = -90f;
     public float Pitch = 0f;
     public float Zoom = 45f;
+    public Vector2 ClippingPlane = new(0.1f, 100f);
     
     public Matrix4x4 ViewMatrix => Matrix4x4.CreateLookAt(Position, Position + Front, Up);
     
@@ -19,5 +20,5 @@ public class Camera
     public Matrix4x4 ProjectionMatrix => Matrix4x4.CreatePerspectiveFieldOfView(
         MathUtil.DegreesToRadians(Zoom), 
         (float)EngineWindow.Window!.Size.X / (float)EngineWindow.Window.Size.Y, 
-        0.1f, 100.0f);
+        ClippingPlane.X, ClippingPlane.Y);
 }
