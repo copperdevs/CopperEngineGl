@@ -38,6 +38,8 @@ internal static class EngineEditor
         Log.Info("Loading ImGui Style");
 
         InfoWindow.Initialize();
+        SceneView.Initialize();
+        
         Log.Info("Initialized Engine Editor");
     }
     private static void LoadConfig()
@@ -46,7 +48,7 @@ internal static class EngineEditor
         ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;
         ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
         ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.NavEnableGamepad;
-        // ImGui.GetIO().ConfigWindowsMoveFromTitleBarOnly = true;
+        ImGui.GetIO().ConfigWindowsMoveFromTitleBarOnly = true;
         
         ImGui.GetStyle().WindowRounding = 5;
         ImGui.GetStyle().ChildRounding = 5;
@@ -101,6 +103,7 @@ internal static class EngineEditor
     {
         ImGuiController?.Update((float) delta);
         InfoWindow.Update();
+        SceneView.Update();
     }
 
     internal static void Render()
@@ -111,6 +114,8 @@ internal static class EngineEditor
             ImGui.ShowDemoWindow(ref showDemoWindow);
         
         InfoWindow.Render();
+        SceneView.Render();
+        
         RenderEditor?.Invoke();
         
         ImGuiController?.Render();
@@ -134,6 +139,7 @@ internal static class EngineEditor
             {
                 ImGui.MenuItem("ImGui Demo", null, ref showDemoWindow);
                 ImGui.MenuItem("Info", null, ref InfoWindow.IsOpen);
+                ImGui.MenuItem("Scene", null, ref SceneView.IsOpen);
                 ImGui.EndMenu();
             }
             

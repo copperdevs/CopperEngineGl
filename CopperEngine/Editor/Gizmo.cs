@@ -1,46 +1,50 @@
 ﻿using CopperEngine.Components;
+using ImGuiNET;
+using ImGuizmoNET;
+using Silk.NET.GLFW;
 
 namespace CopperEngine.Editor;
 
 internal static class Gizmo
 {
-    internal static void EditTransform(ref GameObject gameObject)
+    public static OPERATION Operation = OPERATION.TRANSLATE;
+    private static bool usingGizmo = false;
+
+    public static void Draw(ref GameObject gameObject)
     {
-        // var transform = gameObject.Transform;
-        //
-        // // var position = transform.Position;
-        // // if(ImGui.DragFloat3("Position", ref position, 0.1f))
-        // //     transform.Position = position;
-        // //         
-        // // var scale = transform.Scale;
-        // // if(ImGui.DragFloat("Scale", ref scale, 0.1f))
-        // //     transform.Scale = scale;
-        // //         
-        // // var rotation = transform.Rotation.ToEulerAngles();
-        // // if(ImGui.DragFloat3("Rotation", ref rotation, 0.1f))
-        // //     transform.Rotation = rotation.FromEulerAngles();
-        //
-        // var camera = VoxelRenderer.Camera;
-        // var transformMatrix = transform.ViewMatrix;
-        //
-        // var matrixTranslation = new float();
-        // var matrixRotation = new float();
-        // var matrixScale = new float();
-        //
-        // ImGuizmo.DecomposeMatrixToComponents(ref transformMatrix.M44, ref matrixTranslation, ref matrixRotation, ref matrixScale);
-        //
-        // var position = transform.Position;
-        // if(ImGui.DragFloat3("Position", ref position, 0.1f))
-        //     transform.Position = position;
-        //         
-        // var scale = transform.Scale;
-        // if(ImGui.DragFloat("Scale", ref scale, 0.1f))
-        //     transform.Scale = scale;
-        //         
-        // var rotation = transform.Rotation.ToEulerAngles();
-        // if(ImGui.DragFloat3("Rotation", ref rotation, 0.1f))
-        //     transform.Rotation = rotation.FromEulerAngles();
-        //
-        // ImGuizmo.Manipulate(ref camera.ViewMatrix.M44, ref camera.ProjectionMatrix.M44, OPERATION.TRANSLATE, MODE.WORLD, ref transformMatrix.M44);
+        var cameraView = EngineRenderer.Camera.ViewMatrix;
+        var cameraProj = EngineRenderer.Camera.ProjectionMatrix;
+
+        ImGuizmo.SetDrawlist();
+        ImGuizmo.SetOrthographic(true);
+        if (ImGui.IsWindowHovered())
+        {
+            if (ImGui.IsKeyDown(ImGuiKey.Q)) Operation = OPERATION.TRANSLATE;
+            if (ImGui.IsKeyDown(ImGuiKey.E)) Operation = OPERATION.ROTATE;
+            if (ImGui.IsKeyDown(ImGuiKey.R)) Operation = OPERATION.SCALE;
+        }
+
+        ImGuizmo.SetGizmoSizeClipSpace(0.3f);
+        ImGuizmo.SetRect(ImGui.GetWindowPos().X, ImGui.GetWindowPos().Y, ImGui.GetItemRectSize().X,
+            ImGui.GetItemRectSize().Y);
+
+        var transform = gameObject.Transform;
+
+        var transformMatrix = transform.Matrix;
+        ImGuizmo.Manipulate(ref cameraView.M11, ref cameraProj.M11, Operation, MODE.LOCAL, ref transformMatrix.M11);
+        transform.Matrix = transformMatrix;
+
+        if (ImGuizmo.IsUsing())
+        {
+            gameObject.Transform = transform;
+            usingGizmo = true;
+        }
+        else
+        {
+            usingGizmo = false;
+        }
+
+
+        ImGuizmo.DrawGrid(ref cameraView.M11, ref cameraProj.M11, ref transformMatrix.M11, 50);
     }
 }

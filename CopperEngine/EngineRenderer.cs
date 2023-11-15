@@ -28,6 +28,8 @@ public static class EngineRenderer
     internal static List<Light> Lights = new();
     
     public static Camera Camera { get; internal set; } = new();
+    internal static Camera GameCamera = new();
+    internal static Camera EditorCamera = new();    
 
     internal static void Initialize()
     {
@@ -46,6 +48,17 @@ public static class EngineRenderer
     
     internal static void Render()
     {
+        // Gl.Enable(EnableCap.DepthTest);
+        // EngineWindow.Gl?.ClearColor(Color.FromArgb(255, (int) (.45f * 255), (int) (.55f * 255), (int) (.60f * 255)));
+        // Gl.Clear((uint) (ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit));
+        RenderScene();   
+        EngineEditor.Render();
+    }
+
+    internal static void RenderScene()
+    {
+        // Camera = camera;
+        
         Gl.Enable(EnableCap.DepthTest);
         EngineWindow.Gl?.ClearColor(Color.FromArgb(255, (int) (.45f * 255), (int) (.55f * 255), (int) (.60f * 255)));
         Gl.Clear((uint) (ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit));
@@ -55,12 +68,11 @@ public static class EngineRenderer
         RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.BeforeRenderingGameObjects).ToList().ForEach(rf => rf.Render());
         SceneManager.CurrentSceneGameObjectsRender();
         SceneManager.GameObjectsRender(CopperEngine.Engine.EngineAssets);
-        EngineEditor.Render();
         RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterRenderingGameObjects).ToList().ForEach(rf => rf.Render());
         RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.BeforePostProcessing).ToList().ForEach(rf => rf.Render());
         RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.PostProcessing).ToList().ForEach(rf => rf.Render());
         RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterPostProcessing).ToList().ForEach(rf => rf.Render());
-        RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterRendering).ToList().ForEach(rf => rf.Render());
+        RenderFeatures.Where(rf => rf.Event == RenderFeatureEvent.AfterRendering).ToList().ForEach(rf => rf.Render()); 
     }
 
     internal static void Close()

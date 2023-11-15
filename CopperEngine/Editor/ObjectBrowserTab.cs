@@ -12,7 +12,9 @@ namespace CopperEngine.Editor;
 
 internal static class ObjectBrowserTab
 {
-    private static GameObject? currentObjectBrowserTarget;
+    internal static GameObject? currentObjectBrowserTarget;
+    internal static bool currentObjectBrowserTargetTransformOpen;
+    
     
     internal static void Render()
     {
@@ -58,8 +60,10 @@ internal static class ObjectBrowserTab
     {
         if (currentObjectBrowserTarget is null) 
             return;
+
+        currentObjectBrowserTargetTransformOpen = ImGui.CollapsingHeader("Transform");
         
-        if (ImGui.CollapsingHeader("Transform"))
+        if (currentObjectBrowserTargetTransformOpen)
         {
             ImGui.Indent();
 
